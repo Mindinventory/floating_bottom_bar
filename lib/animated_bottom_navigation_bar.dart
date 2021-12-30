@@ -36,11 +36,12 @@ class _BottomNavBarBodyState extends State<BottomNavBarBody> with TickerProvider
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        GestureDetector(
-          onTap: () {},
-          child: Align(
+    return SizedBox(
+      height: 200.0,
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          Align(
             alignment: Alignment.bottomCenter,
             child: PhysicalShape(
               elevation: Dimensions.elevation,
@@ -55,49 +56,47 @@ class _BottomNavBarBodyState extends State<BottomNavBarBody> with TickerProvider
                 geometry: geometryListenable,
                 notchMargin: Dimensions.notchMargin,
               ),
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child: Material(
+              clipBehavior: Clip.antiAlias,
+              child: Container(
                 color: ColoursAssets.white1,
-                child: SafeArea(
-                  child: SizedBox(
-                    child: Row(
-                      children: [
-                        _IconButton(
-                          icon: Icons.ten_k_outlined,
-                          onPress: () {},
-                          padding: Dimensions.iconsLeftPadding,
-                        ),
-                        _IconButton(
-                          icon: Icons.ten_k_outlined,
-                          onPress: () {},
-                          padding: Dimensions.iconsLeftPadding,
-                        ),
-                        _IconButton(
-                          icon: Icons.ten_k_outlined,
-                          onPress: () {},
-                          padding: Dimensions.iconsLeftPadding1,
-                        ),
-                        _IconButton(
-                          icon: Icons.ten_k_outlined,
-                          onPress: () {},
-                          padding: Dimensions.iconsLeftPadding,
-                        ),
-                      ],
-                    ),
-                    height: Dimensions.containerHeight,
+                child: SizedBox(
+                  child: Row(
+                    children: [
+                      _IconButton(
+                        icon: Icons.ten_k_outlined,
+                        onPress: () {},
+                        padding: Dimensions.iconsLeftPadding,
+                      ),
+                      _IconButton(
+                        icon: Icons.ten_k_outlined,
+                        onPress: () {},
+                        padding: Dimensions.iconsLeftPadding,
+                      ),
+                      _IconButton(
+                        icon: Icons.ten_k_outlined,
+                        onPress: () {},
+                        padding: Dimensions.iconsLeftPadding1,
+                      ),
+                      _IconButton(
+                        icon: Icons.ten_k_outlined,
+                        onPress: () {},
+                        padding: Dimensions.iconsLeftPadding,
+                      ),
+                    ],
                   ),
+                  height: Dimensions.containerHeight,
                 ),
               ),
             ),
           ),
-        ),
-        AnimatedButton(
-          circleToggleCallBack: (bool value) {
-            circleButtonToggle = value;
-            setState(() {});
-          },
-        ),
-      ],
+          AnimatedButton(
+            circleToggleCallBack: (bool value) {
+              circleButtonToggle = value;
+              setState(() {});
+            },
+          ),
+        ],
+      ),
     );
   }
 }
@@ -122,6 +121,24 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
     Icons.home_filled,
   ];
 
+  late AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 500),
+      vsync: this,
+      upperBound: 0.5,
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _animationController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -130,6 +147,11 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
         alignment: Alignment.bottomCenter,
         child: GestureDetector(
           onTap: () {
+            if (circleButtonState) {
+              _animationController.reverse(from: .5);
+            } else {
+              _animationController.forward(from: .0);
+            }
             circleButtonState = !circleButtonState;
             setState(() {});
             widget.circleToggleCallBack.call(circleButtonState);
@@ -148,37 +170,40 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
               children: [
                 circleButtonState
                     ? Expanded(
-                        child: Center(
-                          child: AnimatedList(
-                            key: _listOfWidgetsKey,
-                            itemBuilder: (BuildContext context, index, animation) {
-                              return SlideTransition(
-                                position: Tween<Offset>(
-                                  begin: const Offset(0, 2),
-                                  end: const Offset(0, 0),
-                                ).animate(
-                                  CurvedAnimation(
-                                    curve: Curves.easeInOutBack,
-                                    parent: animation,
-                                  ),
-                                ),
-                                child: ListOfIconData(
-                                  listOfIconData: _listOfIcons[index],
-                                ),
-                              );
-                            },
+                  child: Center(
+                    child: AnimatedList(
+                      key: _listOfWidgetsKey,
+                      itemBuilder: (BuildContext context, index, animation) {
+                        return SlideTransition(
+                          position: Tween<Offset>(
+                            begin: const Offset(0, 2),
+                            end: const Offset(0, 0),
+                          ).animate(
+                            CurvedAnimation(
+                              curve: Curves.easeInOutBack,
+                              parent: animation,
+                            ),
                           ),
-                        ),
-                      )
+                          child: ListOfIconData(
+                            listOfIconData: _listOfIcons[index],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                )
                     : Container(),
                 !circleButtonState
-                    ? const Padding(
-                        padding: EdgeInsets.only(top: Dimensions.buttonPadding),
-                        child: Icon(
-                          Icons.add,
-                          color: ColoursAssets.white,
-                        ),
-                      )
+                    ? Padding(
+                  padding: const EdgeInsets.only(top: Dimensions.buttonPadding),
+                  child: RotationTransition(
+                    turns: Tween(begin: 0.0, end: 1.0).animate(_animationController),
+                    child: const Icon(
+                      Icons.add,
+                      color: ColoursAssets.white,
+                    ),
+                  ),
+                )
                     : Container(),
               ],
             ),
@@ -192,7 +217,7 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
     var future = Future(() {});
     for (var index = 0; index < _listOfIcons.length; index++) {
       future = future.then((_) {
-        return Future.delayed(const Duration(milliseconds: 40), () {
+        return Future.delayed(const Duration(milliseconds: 140), () {
           _listOfWidgetsKey.currentState?.insertItem(index);
         });
       });
