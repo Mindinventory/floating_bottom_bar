@@ -41,16 +41,21 @@ part 'widgets/menu_items.dart';
 part 'widgets/menu_items_child.dart';
 
 class AnimatedBottomNavigationBar extends StatefulWidget {
-  const AnimatedBottomNavigationBar({required this.menuCenterModel, required this.menuItems, Key? key})
+  const AnimatedBottomNavigationBar(
+      {required this.bottomBarCenterModel,
+      required this.bottomBarItems,
+      Key? key})
       : super(key: key);
-  final List<BottomBarItemsModel> menuItems;
-  final BottomBarCenterModel menuCenterModel;
+  final List<BottomBarItemsModel> bottomBarItems;
+  final BottomBarCenterModel bottomBarCenterModel;
 
   @override
-  _AnimatedBottomNavigationBarState createState() => _AnimatedBottomNavigationBarState();
+  _AnimatedBottomNavigationBarState createState() =>
+      _AnimatedBottomNavigationBarState();
 }
 
-class _AnimatedBottomNavigationBarState extends State<AnimatedBottomNavigationBar> with TickerProviderStateMixin {
+class _AnimatedBottomNavigationBarState
+    extends State<AnimatedBottomNavigationBar> with TickerProviderStateMixin {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -70,11 +75,11 @@ class _AnimatedBottomNavigationBarState extends State<AnimatedBottomNavigationBa
         fit: StackFit.loose,
         alignment: Alignment.bottomCenter,
         children: [
-          MenuItems(
-            menuItemsList: widget.menuItems,
+          BottomBarItems(
+            bottomBarItemsList: widget.bottomBarItems,
           ),
           AnimatedButton(
-            menuCenterModel: widget.menuCenterModel,
+            bottomBarCenterModel: widget.bottomBarCenterModel,
           ),
         ],
       ),
@@ -86,7 +91,9 @@ class _AnimatedBottomNavigationBarState extends State<AnimatedBottomNavigationBa
 
   /// Check validations like maximum items exceed and item count is even.
   void _checkValidations() {
-    assert(widget.menuItems.length <= Dimens.maximumItems, Strings.menuItemsMaximum);
-    assert(isEvenCount(widget.menuItems.length), Strings.menuItemsMustBeEven);
+    assert(widget.bottomBarItems.length <= Dimens.maximumItems,
+        Strings.menuItemsMaximum);
+    assert(
+        isEvenCount(widget.bottomBarItems.length), Strings.menuItemsMustBeEven);
   }
 }

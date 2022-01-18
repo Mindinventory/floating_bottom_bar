@@ -2,7 +2,9 @@ part of bottom_navigator_animation;
 
 /// [FloatingCenterButton] class shows a
 class FloatingCenterButton extends StatefulWidget {
-  const FloatingCenterButton({required this.child, this.onAnimationComplete, Key? key}) : super(key: key);
+  const FloatingCenterButton(
+      {required this.child, this.onAnimationComplete, Key? key})
+      : super(key: key);
   final Widget child;
   final VoidCallback? onAnimationComplete;
 
@@ -10,7 +12,8 @@ class FloatingCenterButton extends StatefulWidget {
   State<FloatingCenterButton> createState() => _FloatingCenterButtonState();
 }
 
-class _FloatingCenterButtonState extends State<FloatingCenterButton> with TickerProviderStateMixin {
+class _FloatingCenterButtonState extends State<FloatingCenterButton>
+    with TickerProviderStateMixin {
   late AnimationController _animationController;
 
   @override

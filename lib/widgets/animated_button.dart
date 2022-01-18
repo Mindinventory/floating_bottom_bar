@@ -4,11 +4,11 @@ part of bottom_navigator_animation;
 /// We have created animations using [AnimatedList].
 class AnimatedButton extends StatefulWidget {
   const AnimatedButton({
-    required this.menuCenterModel,
+    required this.bottomBarCenterModel,
     Key? key,
   }) : super(key: key);
 
-  final BottomBarCenterModel menuCenterModel;
+  final BottomBarCenterModel bottomBarCenterModel;
 
   @override
   State<AnimatedButton> createState() => AnimatedButtonState();
@@ -51,11 +51,11 @@ class AnimatedButtonState extends State<AnimatedButton> {
             curve: Curves.easeOut,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(Dimens.borderRadius),
-              color: widget.menuCenterModel.centerBackgroundColor,
+              color: widget.bottomBarCenterModel.centerBackgroundColor,
             ),
             child: FloatingCenterButton(
               key: _floatingCenterButtonStateKey,
-              child: widget.menuCenterModel.centerIcon,
+              child: widget.bottomBarCenterModel.centerIcon,
               onAnimationComplete: () {
                 // We have added this animation listener.
                 // Here we only manage the show overlay
@@ -82,10 +82,12 @@ class AnimatedButtonState extends State<AnimatedButton> {
   }
 
   void _handleOnTap() {
-    if (_circleButtonAnimationState == CircleButtonAnimationState.running) return;
+    if (_circleButtonAnimationState == CircleButtonAnimationState.running) {
+      return;
+    }
     _circleButtonAnimationState = CircleButtonAnimationState.running;
-    Future.delayed(Duration(milliseconds: Dimens.animationDurationHigh * widget.menuCenterModel.centerIconChild.length),
-        () {
+    Future.delayed(
+        Duration(milliseconds: Dimens.animationDurationHigh * widget.bottomBarCenterModel.centerIconChild.length), () {
       _circleButtonAnimationState = CircleButtonAnimationState.idle;
     });
 
@@ -103,9 +105,9 @@ class AnimatedButtonState extends State<AnimatedButton> {
     Offset _position = _renderBox.localToGlobal(Offset.zero);
     _overlayEntry = OverlayEntry(builder: (context) {
       return CenterButtons(
-        menuCenterModel: widget.menuCenterModel,
+        bottomBarCenterModel: widget.bottomBarCenterModel,
         position: _position,
-        onTap: (){},
+        onTap: () {},
         key: _centerButtonsState,
       );
     });

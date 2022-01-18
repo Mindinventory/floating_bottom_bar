@@ -23,5 +23,4 @@ class EventBusImpl extends EventBus {
 }
 
 /// This event will fires when on tap clicks.
-class ItemClickBusEvent extends BusEvent {
-}
+class ItemClickBusEvent extends BusEvent {}

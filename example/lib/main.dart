@@ -56,37 +56,46 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
             floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             body: const Center(child: Text('Text')),
             bottomNavigationBar: AnimatedBottomNavigationBar(
-              menuItems: [
+              bottomBarItems: [
                 BottomBarItemsModel(
                   icon: const Icon(Icons.home, size: example.Dimens.iconNormal),
                   iconSelected: const Icon(Icons.home, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
                   title: example.Strings.home,
                   dotColor: example.AppColors.cherryRed,
-                  onTap: (){
-                    log('bla bla bla');
-                  }
+                  onTap: () {
+                    log('Home');
+                  },
                 ),
-                const BottomBarItemsModel(
-                  icon: Icon(Icons.search, size: example.Dimens.iconNormal),
-                  iconSelected: Icon(Icons.search, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
+                BottomBarItemsModel(
+                  icon: const Icon(Icons.search, size: example.Dimens.iconNormal),
+                  iconSelected: const Icon(Icons.search, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
                   title: example.Strings.search,
                   dotColor: example.AppColors.cherryRed,
+                  onTap: () {
+                    log('Search');
+                  },
                 ),
-                const BottomBarItemsModel(
-                  icon: Icon(Icons.person, size: example.Dimens.iconNormal),
-                  iconSelected: Icon(Icons.person, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
+                BottomBarItemsModel(
+                  icon: const Icon(Icons.person, size: example.Dimens.iconNormal),
+                  iconSelected: const Icon(Icons.person, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
                   title: example.Strings.person,
                   dotColor: example.AppColors.cherryRed,
+                  onTap: () {
+                    log('Profile');
+                  },
                 ),
-                const BottomBarItemsModel(
-                  icon: Icon(Icons.settings, size: example.Dimens.iconNormal),
-                  iconSelected: Icon(Icons.settings, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
-                  title: example.Strings.settings,
-                  dotColor: example.AppColors.cherryRed,
-                ),
+                BottomBarItemsModel(
+                    icon: const Icon(Icons.settings, size: example.Dimens.iconNormal),
+                    iconSelected:
+                        const Icon(Icons.settings, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
+                    title: example.Strings.settings,
+                    dotColor: example.AppColors.cherryRed,
+                    onTap: () {
+                      log('Settings');
+                    }),
               ],
-              menuCenterModel: BottomBarCenterModel(
-                centerBackgroundColor: example.AppColors.black,
+              bottomBarCenterModel: BottomBarCenterModel(
+                centerBackgroundColor: example.AppColors.cherryRed,
                 centerIcon: const FloatingCenterButton(
                   child: Icon(
                     Icons.add,
@@ -99,21 +108,27 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
                       Icons.home,
                       color: AppColors.white,
                     ),
-                    onTap: (){
-                      log('bla bla bla');
+                    onTap: () {
+                      log('Item 1');
                     },
                   ),
-                  const FloatingCenterButtonChild(
-                    child: Icon(
-                      Icons.home,
-                      color: AppColors.white,
-                    ),
-                  ),
-                  const FloatingCenterButtonChild(
+                  FloatingCenterButtonChild(
                     child: const Icon(
                       Icons.home,
                       color: AppColors.white,
                     ),
+                    onTap: () {
+                      log('Item 2');
+                    },
+                  ),
+                  FloatingCenterButtonChild(
+                    child: const Icon(
+                      Icons.home,
+                      color: AppColors.white,
+                    ),
+                    onTap: () {
+                      log('Item 3');
+                    },
                   ),
                 ],
               ),

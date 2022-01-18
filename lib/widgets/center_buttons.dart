@@ -2,13 +2,13 @@ part of bottom_navigator_animation;
 
 class CenterButtons extends StatefulWidget {
   const CenterButtons({
-    required this.menuCenterModel,
+    required this.bottomBarCenterModel,
     required this.onTap,
     required this.position,
     Key? key,
   }) : super(key: key);
 
-  final BottomBarCenterModel menuCenterModel;
+  final BottomBarCenterModel bottomBarCenterModel;
   final VoidCallback onTap;
   final Offset position;
 
@@ -17,7 +17,8 @@ class CenterButtons extends StatefulWidget {
 }
 
 class _CenterButtonsState extends State<CenterButtons> {
-  final GlobalKey<AnimatedListState> _listOfWidgetsKey = GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> _listOfWidgetsKey =
+      GlobalKey<AnimatedListState>();
   final ValueNotifier<double> _opacity = ValueNotifier(Dimens.opacitySmall);
   final ValueNotifier<double> _height = ValueNotifier(Dimens.buttonHeight);
   late MediaQueryData _mediaQueryData;
@@ -46,10 +47,12 @@ class _CenterButtonsState extends State<CenterButtons> {
       builder: (context, value, child) {
         return Positioned(
           left: widget.position.dx,
-          bottom: ((_mediaQueryData.size.height - Dimens.buttonHeight) - widget.position.dy),
+          bottom: ((_mediaQueryData.size.height - Dimens.buttonHeight) -
+              widget.position.dy),
           child: AnimatedOpacity(
             opacity: value,
-            duration: const Duration(milliseconds: Dimens.animationDurationHigh),
+            duration:
+                const Duration(milliseconds: Dimens.animationDurationHigh),
             child: GestureDetector(
               onTap: () => widget.onTap(),
               child: ValueListenableBuilder<double>(
@@ -59,21 +62,26 @@ class _CenterButtonsState extends State<CenterButtons> {
                       width: Dimens.closeButtonWidth,
                       height: value,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(Dimens.borderRadius),
-                        color: widget.menuCenterModel.centerBackgroundColor,
+                        borderRadius:
+                            BorderRadius.circular(Dimens.borderRadius),
+                        color:
+                            widget.bottomBarCenterModel.centerBackgroundColor,
                         // color: AppColors.lightPink
                       ),
                       curve: Curves.easeOut,
                       duration: Duration(
                           milliseconds: (value > Dimens.buttonHeight)
                               ? Dimens.animationDurationNormal
-                              : (Dimens.animationDurationHigh * widget.menuCenterModel.centerIconChild.length)),
+                              : (Dimens.animationDurationHigh *
+                                  widget.bottomBarCenterModel.centerIconChild
+                                      .length)),
                       child: AnimatedList(
                         key: _listOfWidgetsKey,
                         itemBuilder: (BuildContext context, index, animation) {
                           return CenterButtonChildAnimation(
                             animation: animation,
-                            child: widget.menuCenterModel.centerIconChild[index],
+                            child: widget
+                                .bottomBarCenterModel.centerIconChild[index],
                           );
                         },
                       ),
@@ -93,9 +101,12 @@ class _CenterButtonsState extends State<CenterButtons> {
   /// [_insertItemInAnimatedList] method inserts element in [AnimatedList].
   void _insertItemInAnimatedList() {
     var future = Future(() {});
-    for (var index = 0; index < widget.menuCenterModel.centerIconChild.length; index++) {
+    for (var index = 0;
+        index < widget.bottomBarCenterModel.centerIconChild.length;
+        index++) {
       future = future.then((_) {
-        return Future.delayed(const Duration(milliseconds: Dimens.animationDurationHigh), () {
+        return Future.delayed(
+            const Duration(milliseconds: Dimens.animationDurationHigh), () {
           _listOfWidgetsKey.currentState?.insertItem(index);
         });
       });
@@ -104,13 +115,15 @@ class _CenterButtonsState extends State<CenterButtons> {
 
   /// [_removeItemFromAnimatedList] method removes element from [AnimatedList].
   void _removeItemFromAnimatedList() {
-    for (var index = widget.menuCenterModel.centerIconChild.length - 1; index >= 0; index--) {
+    for (var index = widget.bottomBarCenterModel.centerIconChild.length - 1;
+        index >= 0;
+        index--) {
       _listOfWidgetsKey.currentState?.removeItem(
         index,
         (_, animation) {
           return CenterButtonChildAnimation(
             animation: animation,
-            child: widget.menuCenterModel.centerIconChild[index],
+            child: widget.bottomBarCenterModel.centerIconChild[index],
           );
         },
         duration: const Duration(milliseconds: Dimens.animationDurationHigh),
@@ -121,7 +134,8 @@ class _CenterButtonsState extends State<CenterButtons> {
   void _initialize() {
     SchedulerBinding.instance?.addPostFrameCallback((timeStamp) {
       _opacity.value = Dimens.opacityHigh;
-      _height.value = Dimens.buttonHeight * widget.menuCenterModel.centerIconChild.length;
+      _height.value = Dimens.buttonHeight *
+          widget.bottomBarCenterModel.centerIconChild.length;
       _insertItemInAnimatedList();
     });
   }

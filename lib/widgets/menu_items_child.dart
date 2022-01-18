@@ -1,25 +1,26 @@
 part of bottom_navigator_animation;
 
-/// [MenuItemsChild] class takes [index],[menuItemsModel],[widgetWidth],[onTapCallback] parameters
+/// [BottomBarItemsChild] class takes [index],[BottomBarItemsModel],[widgetWidth],[onTapCallback] parameters
 /// We will Display each menu item in bottom navigation.
-class MenuItemsChild extends StatefulWidget {
-  const MenuItemsChild({
+class BottomBarItemsChild extends StatefulWidget {
+  const BottomBarItemsChild({
     required this.index,
-    required this.menuItemsModel,
+    required this.bottomBarItemsModel,
     required this.widgetWidth,
     required this.onTapCallback,
     Key? key,
   }) : super(key: key);
-  final BottomBarItemsModel menuItemsModel;
+  final BottomBarItemsModel bottomBarItemsModel;
   final Function(int index) onTapCallback;
   final double widgetWidth;
   final int index;
 
   @override
-  _MenuItemsChildState createState() => _MenuItemsChildState();
+  _BottomBarItemsChildState createState() => _BottomBarItemsChildState();
 }
 
-class _MenuItemsChildState extends State<MenuItemsChild> with TickerProviderStateMixin {
+class _BottomBarItemsChildState extends State<BottomBarItemsChild>
+    with TickerProviderStateMixin {
   final ValueNotifier<double> _opacity = ValueNotifier(Dimens.maxOpacity);
 
   /// Below variables for animated icon.
@@ -45,7 +46,9 @@ class _MenuItemsChildState extends State<MenuItemsChild> with TickerProviderStat
   }
 
   void changeOpacity() {
-    _opacity.value = (_opacity.value == Dimens.maxOpacity) ? Dimens.minOpacity : Dimens.maxOpacity;
+    _opacity.value = (_opacity.value == Dimens.maxOpacity)
+        ? Dimens.minOpacity
+        : Dimens.maxOpacity;
   }
 
   @override
@@ -63,16 +66,22 @@ class _MenuItemsChildState extends State<MenuItemsChild> with TickerProviderStat
 
   void _initializeMembers() {
     /// Here we are initializing animated icon animation
-    _animationControllerIcon =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: Dimens.menuItemAnimationDuration));
+    _animationControllerIcon = AnimationController(
+        vsync: this,
+        duration:
+            const Duration(milliseconds: Dimens.menuItemAnimationDuration));
     _animationOffsetIcon =
-        Tween<Offset>(begin: const Offset(0.0, 1.0), end: Offset.zero).animate(_animationControllerIcon);
+        Tween<Offset>(begin: const Offset(0.0, 1.0), end: Offset.zero)
+            .animate(_animationControllerIcon);
 
     /// Here we are initializing dot animation
-    _animationControllerDot =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: Dimens.menuItemAnimationDuration));
-    _animationOffsetDot =
-        Tween<Offset>(begin: const Offset(0.0, 5.0), end: const Offset(0.0, 1.0)).animate(_animationControllerDot);
+    _animationControllerDot = AnimationController(
+        vsync: this,
+        duration:
+            const Duration(milliseconds: Dimens.menuItemAnimationDuration));
+    _animationOffsetDot = Tween<Offset>(
+            begin: const Offset(0.0, 5.0), end: const Offset(0.0, 1.0))
+        .animate(_animationControllerDot);
   }
 
   @override
@@ -88,10 +97,10 @@ class _MenuItemsChildState extends State<MenuItemsChild> with TickerProviderStat
             ClipRRect(
               child: Stack(
                 children: [
-                  widget.menuItemsModel.icon,
+                  widget.bottomBarItemsModel.icon,
                   SlideTransition(
                     position: _animationOffsetIcon,
-                    child: widget.menuItemsModel.iconSelected,
+                    child: widget.bottomBarItemsModel.iconSelected,
                   ),
                 ],
               ),
@@ -108,7 +117,7 @@ class _MenuItemsChildState extends State<MenuItemsChild> with TickerProviderStat
                         package: Strings.bottomNavigatorAnimation,
                         width: Dimens.defaultDotSize,
                         height: Dimens.defaultDotSize,
-                        color: widget.menuItemsModel.dotColor,
+                        color: widget.bottomBarItemsModel.dotColor,
                       ),
                     ),
                   ),
@@ -116,8 +125,8 @@ class _MenuItemsChildState extends State<MenuItemsChild> with TickerProviderStat
                     builder: (context, value, child) {
                       return AnimatedOpacity(
                         child: Text(
-                          widget.menuItemsModel.title ?? '',
-                          style: widget.menuItemsModel.titleStyle,
+                          widget.bottomBarItemsModel.title ?? '',
+                          style: widget.bottomBarItemsModel.titleStyle,
                         ),
                         opacity: value,
                         duration: const Duration(

@@ -26,6 +26,8 @@ class CircularNotchedAndCorneredRectangleClipper extends CustomClipper<Path> {
   /// The [shouldReclip] method is called when a new instance of the class is provided, to check if the new instance actually represents different information.
   @override
   bool shouldReclip(CircularNotchedAndCorneredRectangleClipper oldClipper) {
-    return oldClipper.geometry != geometry || oldClipper.shape != shape || oldClipper.notchMargin != notchMargin;
+    return oldClipper.geometry != geometry ||
+        oldClipper.shape != shape ||
+        oldClipper.notchMargin != notchMargin;
   }
 }

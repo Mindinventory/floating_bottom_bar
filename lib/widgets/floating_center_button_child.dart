@@ -1,7 +1,8 @@
 part of bottom_navigator_animation;
 
 class FloatingCenterButtonChild extends StatelessWidget {
-  const FloatingCenterButtonChild({required this.child, this.onTap, Key? key}) : super(key: key);
+  const FloatingCenterButtonChild({required this.child, this.onTap, Key? key})
+      : super(key: key);
   final Widget child;
   final VoidCallback? onTap;
 
@@ -15,7 +16,8 @@ class FloatingCenterButtonChild extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(Dimens.buttonContentPadding),
         child: CircleAvatar(
-          backgroundColor: AppColors.white.withOpacity(Dimens.buttonContentOpacityValue),
+          backgroundColor:
+              AppColors.white.withOpacity(Dimens.buttonContentOpacityValue),
           child: child,
           radius: Dimens.circularButtonContentRadius,
         ),

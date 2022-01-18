@@ -12,7 +12,7 @@ class Dimens {
   static const double notchMargin = 6.0;
   static const double elevation = 8.0;
   static const double buttonHeight = 50.0;
-  static const double closeButtonWidth= 50.0;
+  static const double closeButtonWidth = 50.0;
   static const double openButtonHeight = 150.0;
   static const double borderRadius = 30.0;
   static const double buttonContentPadding = 5.0;
@@ -34,10 +34,9 @@ class Dimens {
   // Animation duration
   static const int animationDurationSmall = 140;
   static const int animationDurationNormal = 200;
-  static const int animationDurationHigh = 500;
+  static const int animationDurationHigh = 200;
 
   // Opacity
   static const double opacitySmall = 0.0;
   static const double opacityHigh = 1.0;
-
 }
