@@ -1,65 +1,88 @@
-# animated_segment
+# floating_bottom_bar
 
 
-<a href="https://pub.dev/packages/animated_segment"><img src="https://img.shields.io/pub/v/animated_segment.svg?label=animated_segment" alt="animated_segment version"></a>
-<a href="https://github.com/Mindinventory/animated_segment"><img src="https://img.shields.io/github/stars/Mindinventory/animated_segment?style=social" alt="MIT License"></a>
-<a href="https://developer.android.com" style="pointer-events: stroke;" target="_blank">
-<img src="https://img.shields.io/badge/platform-android-blue">
-</a>
-<a href="https://developer.apple.com/ios/" style="pointer-events: stroke;" target="_blank">
-<img src="https://img.shields.io/badge/platform-iOS-blue">
-</a>
-<a href="" style="pointer-events: stroke;" target="_blank">
-<img src="https://img.shields.io/badge/platform-Linux-blue">
-</a>
-<a href="" style="pointer-events: stroke;" target="_blank">
-<img src="https://img.shields.io/badge/platform-Mac-blue">
-</a>
-<a href="" style="pointer-events: stroke;" target="_blank">
-<img src="https://img.shields.io/badge/platform-web-blue">
-</a>
-<a href="" style="pointer-events: stroke;" target="_blank">
-<img src="https://img.shields.io/badge/platform-Windows-blue">
-</a>
-<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-purple.svg" alt="MIT License"></a>
-
-This package will animates a segment. Package provides you a modern animated fancy segment. Show selection of tab using elastic way animation.
+This package will animate a floating action button at the center and icons at the bottomNavigationBar using [AnimatedContainer](https://api.flutter.dev/flutter/widgets/AnimatedContainer-class.html) and [SlideTransition](https://api.flutter.dev/flutter/widgets/SlideTransition-class.html) respectively.
 
 
-### Animated Segment
-![Animated Segment](https://github.com/Mindinventory/animated_segment/blob/master/assets/animated_segment.gif)
+### Floating Bottom Bar
+![Floating Bottom Bar](https://github.com/Mindinventory/animated_segment/blob/master/assets/animated_segment.gif)
 
 
 ## Usage
 
 ### Example
-    AnimatedSegment(
-      segmentNames: [Strings.tab_1, Strings.tab_2, Strings.tab_3],
-      backgroundColor: AppColors.bgColor,
-      segmentTextColor: AppColors.white,
-      rippleEffectColor: AppColors.primary,
-      selectedSegmentColor: AppColors.primary,
-    );
+    bottomNavigationBar: AnimatedBottomNavigationBar(
+                  bottomBarItems: [
+                    BottomBarItemsModel(
+                        icon: const Icon(Icons.home, size: example.Dimens.iconNormal),
+                        iconSelected: const Icon(Icons.home, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
+                        title: example.Strings.home,
+                        dotColor: example.AppColors.cherryRed,
+                        onTap: () =>log('Home'),
+                    ),
+                    const BottomBarItemsModel(
+                      icon: Icon(Icons.search, size: example.Dimens.iconNormal),
+                      iconSelected: Icon(Icons.search, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
+                      title: example.Strings.search,
+                      dotColor: example.AppColors.cherryRed,
+                      onTap: () =>log('Search'),
+                    ),
+                    const BottomBarItemsModel(
+                      icon: Icon(Icons.person, size: example.Dimens.iconNormal),
+                      iconSelected: Icon(Icons.person, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
+                      title: example.Strings.person,
+                      dotColor: example.AppColors.cherryRed,
+                      onTap: () =>log('Person'),
+                    ),
+                    const BottomBarItemsModel(
+                      icon: Icon(Icons.settings, size: example.Dimens.iconNormal),
+                      iconSelected: Icon(Icons.settings, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
+                      title: example.Strings.settings,
+                      dotColor: example.AppColors.cherryRed,
+                      onTap: () =>log('Settings'),
+                    ),
+                  ],
+                  bottomBarCenterModel: BottomBarCenterModel(
+                    centerBackgroundColor: example.AppColors.cherryRed,
+                    centerIcon: const FloatingCenterButton(
+                      child: Icon(
+                        Icons.add,
+                        color: AppColors.white,
+                      ),
+                    ),
+                    centerIconChild: [
+                      FloatingCenterButtonChild(
+                        child: const Icon(
+                          Icons.home,
+                          color: AppColors.white,
+                        ),
+                        onTap: () {},
+                      ),
+                      FloatingCenterButtonChild(
+                        child: const Icon(
+                          Icons.home,
+                          color: AppColors.white,
+                        ),
+                        onTap: () {},
+                      ),
+                      FloatingCenterButtonChild(
+                        child: const Icon(
+                          Icons.home,
+                          color: AppColors.white,
+                        ),
+                        onTap: () {},
+                      ),
+                    ],
+                  ),
+                ),
 
 ### Required parameters
 
-##### segmentNames:
-This property takes List<String> as a parameter and segmentNames is useful to display items in segment.
+##### bottomBarItems:
+This property takes List<BottomBarItemsModel> as a parameter which are use to show the icons in the bottomNavigationBar.
 
-### Optional parameters
-
-##### backgroundColor:
-This property takes Color value as a parameter. You can change the background color of animated segment. default value is `Color(0xff8AADFB)`
-
-##### segmentTextColor:
-This property takes Color value as a parameter. You can change the text color of segmented text color. default value is `Color(0xff0217FD)`
-
-##### rippleEffectColor:
-This property takes Color value as a parameter. You can change the ripple color of segment. default value is `Colors.white`
-
-##### selectedSegmentColor:
-This property takes Color value as a parameter. You can change the selected segment color of animated segment. default value is `Colors.white`
-
+##### bottomBarCenterModel:
+BottomBarCenterModel class is model class for bottom menu. It takes icon, iconSelected, title, titleStyle as parameters.
 
 ## Guideline for contributors
 Contribution towards our repository is always welcome, we request contributors to create a pull request to the develop branch only.

@@ -1,4 +1,4 @@
-part of bottom_navigator_animation;
+part of floating_bottom_bar;
 
 /// [CircularNotchedAndCorneredRectangleClipper] takes [geometry], [shape], [notchMargin] parameters.
 class CircularNotchedAndCorneredRectangleClipper extends CustomClipper<Path> {

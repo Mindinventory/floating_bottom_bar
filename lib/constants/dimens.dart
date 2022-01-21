@@ -1,4 +1,4 @@
-part of bottom_navigator_animation;
+part of floating_bottom_bar;
 
 /// [Dimens] class contains all the dimensions, which are used in this package.
 class Dimens {

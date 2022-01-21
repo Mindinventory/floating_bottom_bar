@@ -1,9 +1,10 @@
-part of bottom_navigator_animation;
+part of floating_bottom_bar;
 
 /// [BottomBarItems] class is bottom menu item.
 /// Each menu is [BottomBarItemsChild] class.
 class BottomBarItems extends StatefulWidget {
-  const BottomBarItems({required this.bottomBarItemsList, Key? key}) : super(key: key);
+  const BottomBarItems({required this.bottomBarItemsList, Key? key})
+      : super(key: key);
   final List<BottomBarItemsModel> bottomBarItemsList;
 
   @override
@@ -61,7 +62,8 @@ class _BottomBarItemsState extends State<BottomBarItems> {
 
   /// [_generateBottomBarItems]
   _generateBottomBarItems() {
-    double width = MediaQuery.of(context).size.width / (widget.bottomBarItemsList.length + 1);
+    double width = MediaQuery.of(context).size.width /
+        (widget.bottomBarItemsList.length + 1);
     _listBottomBarItemsChild.clear();
     int centerIndex = widget.bottomBarItemsList.length ~/ 2;
     widget.bottomBarItemsList.asMap().forEach((itemIndex, value) {
@@ -101,16 +103,20 @@ class _BottomBarItemsState extends State<BottomBarItems> {
 
   /// [_reverseAnimation] method set reverse animation to last menu item.
   void _reverseAnimation() {
-    if (_listBottomBarItemsChild.isNotEmpty && _listBottomBarItemsChild[_lastIndex].key is GlobalKey) {
-      ((_listBottomBarItemsChild[_lastIndex].key as GlobalKey).currentState as _BottomBarItemsChildState)
+    if (_listBottomBarItemsChild.isNotEmpty &&
+        _listBottomBarItemsChild[_lastIndex].key is GlobalKey) {
+      ((_listBottomBarItemsChild[_lastIndex].key as GlobalKey).currentState
+              as _BottomBarItemsChildState)
           .reverseAnimation();
     }
   }
 
   /// [_forwardAnimation] method set forward animation to menu item.
   void _forwardAnimation() {
-    if (_listBottomBarItemsChild.isNotEmpty && _listBottomBarItemsChild[_currentIndex].key is GlobalKey) {
-      ((_listBottomBarItemsChild[_currentIndex].key as GlobalKey).currentState as _BottomBarItemsChildState)
+    if (_listBottomBarItemsChild.isNotEmpty &&
+        _listBottomBarItemsChild[_currentIndex].key is GlobalKey) {
+      ((_listBottomBarItemsChild[_currentIndex].key as GlobalKey).currentState
+              as _BottomBarItemsChildState)
           .forwardAnimation();
     }
   }

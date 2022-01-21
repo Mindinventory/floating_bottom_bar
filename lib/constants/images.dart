@@ -1,4 +1,4 @@
-part of bottom_navigator_animation;
+part of floating_bottom_bar;
 
 /// [Images] class contains all the images path, which are used in this package.
 class Images {

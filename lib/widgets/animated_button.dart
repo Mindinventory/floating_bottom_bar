@@ -1,4 +1,4 @@
-part of bottom_navigator_animation;
+part of floating_bottom_bar;
 
 /// [AnimatedButton] is docked button in center.
 /// We have created animations using [AnimatedList].
@@ -15,11 +15,14 @@ class AnimatedButton extends StatefulWidget {
 }
 
 class AnimatedButtonState extends State<AnimatedButton> {
-  final GlobalKey<_FloatingCenterButtonState> _floatingCenterButtonStateKey = GlobalKey<_FloatingCenterButtonState>();
-  final GlobalKey<_CenterButtonsState> _centerButtonsState = GlobalKey<_CenterButtonsState>();
+  final GlobalKey<_FloatingCenterButtonState> _floatingCenterButtonStateKey =
+      GlobalKey<_FloatingCenterButtonState>();
+  final GlobalKey<_CenterButtonsState> _centerButtonsState =
+      GlobalKey<_CenterButtonsState>();
   OverlayState? _overlayState;
   OverlayEntry? _overlayEntry;
-  CircleButtonAnimationState _circleButtonAnimationState = CircleButtonAnimationState.idle;
+  CircleButtonAnimationState _circleButtonAnimationState =
+      CircleButtonAnimationState.idle;
 
   /// [eventBus] property is use to send or listen the events.
   static late EventBus eventBus;
@@ -39,13 +42,15 @@ class AnimatedButtonState extends State<AnimatedButton> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: Dimens.bottomPaddingAnimatedButton),
+      padding:
+          const EdgeInsets.only(bottom: Dimens.bottomPaddingAnimatedButton),
       child: Align(
         alignment: Alignment.bottomCenter,
         child: GestureDetector(
           onTap: _handleOnTap,
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: Dimens.animationDurationNormal),
+            duration:
+                const Duration(milliseconds: Dimens.animationDurationNormal),
             height: Dimens.buttonHeight,
             width: Dimens.closeButtonWidth,
             curve: Curves.easeOut,
@@ -82,12 +87,13 @@ class AnimatedButtonState extends State<AnimatedButton> {
   }
 
   void _handleOnTap() {
-    if (_circleButtonAnimationState == CircleButtonAnimationState.running) {
+    if (_circleButtonAnimationState == CircleButtonAnimationState.running)
       return;
-    }
     _circleButtonAnimationState = CircleButtonAnimationState.running;
     Future.delayed(
-        Duration(milliseconds: Dimens.animationDurationHigh * widget.bottomBarCenterModel.centerIconChild.length), () {
+        Duration(
+            milliseconds: Dimens.animationDurationHigh *
+                widget.bottomBarCenterModel.centerIconChild.length), () {
       _circleButtonAnimationState = CircleButtonAnimationState.idle;
     });
 
@@ -101,7 +107,8 @@ class AnimatedButtonState extends State<AnimatedButton> {
   }
 
   void _showCenterButtons() {
-    RenderBox _renderBox = _floatingCenterButtonStateKey.currentContext?.findRenderObject() as RenderBox;
+    RenderBox _renderBox = _floatingCenterButtonStateKey.currentContext
+        ?.findRenderObject() as RenderBox;
     Offset _position = _renderBox.localToGlobal(Offset.zero);
     _overlayEntry = OverlayEntry(builder: (context) {
       return CenterButtons(
@@ -120,7 +127,8 @@ class AnimatedButtonState extends State<AnimatedButton> {
   }
 
   void _updateAnimation(bool isOverlayVisible) {
-    _floatingCenterButtonStateKey.currentState?._animationController.addListener(() {});
+    _floatingCenterButtonStateKey.currentState?._animationController
+        .addListener(() {});
     (isOverlayVisible)
         ? _floatingCenterButtonStateKey.currentState?.forwardAnimation()
         : _floatingCenterButtonStateKey.currentState?.reverseAnimation();

@@ -1,4 +1,4 @@
-library bottom_navigator_animation;
+library floating_bottom_bar;
 
 import 'dart:math' as math;
 
@@ -41,21 +41,19 @@ part 'widgets/menu_items.dart';
 part 'widgets/menu_items_child.dart';
 
 class AnimatedBottomNavigationBar extends StatefulWidget {
-  const AnimatedBottomNavigationBar(
-      {required this.bottomBarCenterModel,
-      required this.bottomBarItems,
-      Key? key})
-      : super(key: key);
+  const AnimatedBottomNavigationBar({
+    required this.bottomBarCenterModel,
+    required this.bottomBarItems,
+    Key? key,
+  }) : super(key: key);
   final List<BottomBarItemsModel> bottomBarItems;
   final BottomBarCenterModel bottomBarCenterModel;
 
   @override
-  _AnimatedBottomNavigationBarState createState() =>
-      _AnimatedBottomNavigationBarState();
+  _AnimatedBottomNavigationBarState createState() => _AnimatedBottomNavigationBarState();
 }
 
-class _AnimatedBottomNavigationBarState
-    extends State<AnimatedBottomNavigationBar> with TickerProviderStateMixin {
+class _AnimatedBottomNavigationBarState extends State<AnimatedBottomNavigationBar> with TickerProviderStateMixin {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -91,9 +89,7 @@ class _AnimatedBottomNavigationBarState
 
   /// Check validations like maximum items exceed and item count is even.
   void _checkValidations() {
-    assert(widget.bottomBarItems.length <= Dimens.maximumItems,
-        Strings.menuItemsMaximum);
-    assert(
-        isEvenCount(widget.bottomBarItems.length), Strings.menuItemsMustBeEven);
+    assert(widget.bottomBarItems.length <= Dimens.maximumItems, Strings.menuItemsMaximum);
+    assert(isEvenCount(widget.bottomBarItems.length), Strings.menuItemsMustBeEven);
   }
 }
