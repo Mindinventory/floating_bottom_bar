@@ -1,4 +1,4 @@
-part of bottom_navigator_animation;
+part of floating_bottom_bar;
 
 class FloatingCenterButtonChild extends StatelessWidget {
   const FloatingCenterButtonChild({required this.child, this.onTap, Key? key})

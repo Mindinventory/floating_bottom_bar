@@ -108,27 +108,21 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
                       Icons.home,
                       color: AppColors.white,
                     ),
-                    onTap: () {
-                      log('Item 1');
-                    },
+                    onTap: () => log('Item1'),
                   ),
                   FloatingCenterButtonChild(
                     child: const Icon(
                       Icons.home,
                       color: AppColors.white,
                     ),
-                    onTap: () {
-                      log('Item 2');
-                    },
+                    onTap: () => log('Item2'),
                   ),
                   FloatingCenterButtonChild(
                     child: const Icon(
                       Icons.home,
                       color: AppColors.white,
                     ),
-                    onTap: () {
-                      log('Item 3');
-                    },
+                    onTap: () => log('Item3'),
                   ),
                 ],
               ),

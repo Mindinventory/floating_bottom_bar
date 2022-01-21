@@ -1,4 +1,4 @@
-part of bottom_navigator_animation;
+part of floating_bottom_bar;
 
 /// [AppColors] class contains all the colors, which are used in this package.
 class AppColors {

@@ -1,4 +1,4 @@
-part of bottom_navigator_animation;
+part of floating_bottom_bar;
 
 /// [CenterButtonChildAnimation] class performs animation when center button clicks.
 class CenterButtonChildAnimation extends StatefulWidget {

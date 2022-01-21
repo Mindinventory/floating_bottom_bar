@@ -1,4 +1,4 @@
-part of bottom_navigator_animation;
+part of floating_bottom_bar;
 
 /// [CircularNotchedAndCorneredRectangle] A shape with a notch in its outline.
 class CircularNotchedAndCorneredRectangle extends NotchedShape {

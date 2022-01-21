@@ -1,4 +1,4 @@
-part of bottom_navigator_animation;
+part of floating_bottom_bar;
 
 /// [FloatingCenterButton] class shows a
 class FloatingCenterButton extends StatefulWidget {
