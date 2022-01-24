@@ -50,10 +50,12 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
   final BottomBarCenterModel bottomBarCenterModel;
 
   @override
-  _AnimatedBottomNavigationBarState createState() => _AnimatedBottomNavigationBarState();
+  _AnimatedBottomNavigationBarState createState() =>
+      _AnimatedBottomNavigationBarState();
 }
 
-class _AnimatedBottomNavigationBarState extends State<AnimatedBottomNavigationBar> with TickerProviderStateMixin {
+class _AnimatedBottomNavigationBarState
+    extends State<AnimatedBottomNavigationBar> with TickerProviderStateMixin {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -89,7 +91,9 @@ class _AnimatedBottomNavigationBarState extends State<AnimatedBottomNavigationBa
 
   /// Check validations like maximum items exceed and item count is even.
   void _checkValidations() {
-    assert(widget.bottomBarItems.length <= Dimens.maximumItems, Strings.menuItemsMaximum);
-    assert(isEvenCount(widget.bottomBarItems.length), Strings.menuItemsMustBeEven);
+    assert(widget.bottomBarItems.length <= Dimens.maximumItems,
+        Strings.menuItemsMaximum);
+    assert(
+        isEvenCount(widget.bottomBarItems.length), Strings.menuItemsMustBeEven);
   }
 }
