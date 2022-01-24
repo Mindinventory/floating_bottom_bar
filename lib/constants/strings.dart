@@ -6,5 +6,5 @@ class Strings {
       'MenuItemsInheritedModel not initialized';
   static const menuItemsMustBeEven = 'Menu Items must be even.';
   static const menuItemsMaximum = 'Menu Items maximum ${Dimens.maximumItems}.';
-  static const bottomNavigatorAnimation = 'bottom_navigator_animation';
+  static const bottomNavigatorAnimation = 'floating_bottom_bar';
 }

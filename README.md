@@ -5,7 +5,7 @@ This package will animate a floating action button at the center and icons at th
 
 
 ### Floating Bottom Bar
-![Floating Bottom Bar](https://github.com/Mindinventory/animated_segment/blob/master/assets/animated_segment.gif)
+![Floating Bottom Bar](https://github.com/mi-ghanshyam/floating_bottom_bar/blob/master/assets/gif/floating_bottom_bar.gif)
 
 
 ## Usage
