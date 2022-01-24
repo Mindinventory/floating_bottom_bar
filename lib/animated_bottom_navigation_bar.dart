@@ -2,7 +2,7 @@ library floating_bottom_bar;
 
 import 'dart:math' as math;
 
-import 'package:bottom_navigator_animation/util/event_bus.dart';
+import 'package:floating_bottom_bar/util/event_bus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

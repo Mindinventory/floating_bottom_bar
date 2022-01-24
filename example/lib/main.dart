@@ -1,9 +1,9 @@
 import 'dart:developer';
 
-import 'package:bottom_navigator_animation/animated_bottom_navigation_bar.dart';
 import 'package:example/constant/dimens.dart' as example;
 import 'package:example/constant/strings.dart' as example;
 import 'package:example/constant/styles.dart';
+import 'package:floating_bottom_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'constant/colors.dart' as example;
@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
 }
 
 class BottomNavigatorExample extends StatefulWidget {
-  const BottomNavigatorExample({Key? key, required this.title}) : super(key: key);
+  const BottomNavigatorExample({Key? key, required this.title})
+      : super(key: key);
 
   final String title;
 
@@ -53,13 +54,16 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
               height: example.Dimens.heightNormal,
               width: example.Dimens.widthNormal,
             ),
-            floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerDocked,
             body: const Center(child: Text('Text')),
             bottomNavigationBar: AnimatedBottomNavigationBar(
               bottomBarItems: [
                 BottomBarItemsModel(
                   icon: const Icon(Icons.home, size: example.Dimens.iconNormal),
-                  iconSelected: const Icon(Icons.home, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
+                  iconSelected: const Icon(Icons.home,
+                      color: AppColors.cherryRed,
+                      size: example.Dimens.iconNormal),
                   title: example.Strings.home,
                   dotColor: example.AppColors.cherryRed,
                   onTap: () {
@@ -67,8 +71,11 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
                   },
                 ),
                 BottomBarItemsModel(
-                  icon: const Icon(Icons.search, size: example.Dimens.iconNormal),
-                  iconSelected: const Icon(Icons.search, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
+                  icon:
+                      const Icon(Icons.search, size: example.Dimens.iconNormal),
+                  iconSelected: const Icon(Icons.search,
+                      color: AppColors.cherryRed,
+                      size: example.Dimens.iconNormal),
                   title: example.Strings.search,
                   dotColor: example.AppColors.cherryRed,
                   onTap: () {
@@ -76,8 +83,11 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
                   },
                 ),
                 BottomBarItemsModel(
-                  icon: const Icon(Icons.person, size: example.Dimens.iconNormal),
-                  iconSelected: const Icon(Icons.person, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
+                  icon:
+                      const Icon(Icons.person, size: example.Dimens.iconNormal),
+                  iconSelected: const Icon(Icons.person,
+                      color: AppColors.cherryRed,
+                      size: example.Dimens.iconNormal),
                   title: example.Strings.person,
                   dotColor: example.AppColors.cherryRed,
                   onTap: () {
@@ -85,9 +95,11 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
                   },
                 ),
                 BottomBarItemsModel(
-                    icon: const Icon(Icons.settings, size: example.Dimens.iconNormal),
-                    iconSelected:
-                        const Icon(Icons.settings, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
+                    icon: const Icon(Icons.settings,
+                        size: example.Dimens.iconNormal),
+                    iconSelected: const Icon(Icons.settings,
+                        color: AppColors.cherryRed,
+                        size: example.Dimens.iconNormal),
                     title: example.Strings.settings,
                     dotColor: example.AppColors.cherryRed,
                     onTap: () {
