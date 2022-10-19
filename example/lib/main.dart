@@ -59,6 +59,9 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
             body: const Center(child: Text('Text')),
             bottomNavigationBar: AnimatedBottomNavigationBar(
               appbarColor: Colors.white,
+              appbarGradient: const LinearGradient(
+                colors: [Colors.white,Colors.cyan],begin: Alignment.topCenter,end: Alignment.bottomCenter
+              ),
               bottomBarItems: [
                 BottomBarItemsModel(
                   icon: const Icon(Icons.home, size: example.Dimens.iconNormal),

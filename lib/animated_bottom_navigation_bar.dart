@@ -45,12 +45,15 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     required this.bottomBarCenterModel,
     required this.bottomBarItems,
     this.appbarColor = Colors.white,
+    this.appbarGradient,
+
 
     Key? key,
   }) : super(key: key);
   final List<BottomBarItemsModel> bottomBarItems;
   final BottomBarCenterModel bottomBarCenterModel;
   final Color appbarColor;
+  final Gradient? appbarGradient;
 
   @override
   _AnimatedBottomNavigationBarState createState() =>
@@ -81,6 +84,7 @@ class _AnimatedBottomNavigationBarState
           BottomBarItems(
             appbarColor: widget.appbarColor,
             bottomBarItemsList: widget.bottomBarItems,
+            appbarGradient: widget.appbarGradient,
           ),
           AnimatedButton(
             bottomBarCenterModel: widget.bottomBarCenterModel,
