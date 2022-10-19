@@ -12,34 +12,20 @@ This package will animate a floating action button at the center and icons at th
 
 ### Example
     bottomNavigationBar: AnimatedBottomNavigationBar(
-                  bottomBarItems: [
+
+                  appbarColor: Colors.white,
+                  appbarGradient: const LinearGradient(
+                  colors: [Colors.white, Colors.white12],
+                  stops: [0.2, 0.8],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter),
+                    bottomBarItems: [
                     BottomBarItemsModel(
                         icon: const Icon(Icons.home, size: example.Dimens.iconNormal),
                         iconSelected: const Icon(Icons.home, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
                         title: example.Strings.home,
                         dotColor: example.AppColors.cherryRed,
-                        onTap: () =>log('Home'),
-                    ),
-                    const BottomBarItemsModel(
-                      icon: Icon(Icons.search, size: example.Dimens.iconNormal),
-                      iconSelected: Icon(Icons.search, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
-                      title: example.Strings.search,
-                      dotColor: example.AppColors.cherryRed,
-                      onTap: () =>log('Search'),
-                    ),
-                    const BottomBarItemsModel(
-                      icon: Icon(Icons.person, size: example.Dimens.iconNormal),
-                      iconSelected: Icon(Icons.person, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
-                      title: example.Strings.person,
-                      dotColor: example.AppColors.cherryRed,
-                      onTap: () =>log('Person'),
-                    ),
-                    const BottomBarItemsModel(
-                      icon: Icon(Icons.settings, size: example.Dimens.iconNormal),
-                      iconSelected: Icon(Icons.settings, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
-                      title: example.Strings.settings,
-                      dotColor: example.AppColors.cherryRed,
-                      onTap: () =>log('Settings'),
+                        onTap: () => // Do something here,
                     ),
                   ],
                   bottomBarCenterModel: BottomBarCenterModel(
@@ -83,6 +69,15 @@ This property takes List<BottomBarItemsModel> as a parameter which are use to sh
 
 ##### bottomBarCenterModel:
 BottomBarCenterModel class is model class for bottom menu. It takes icon, iconSelected, title, titleStyle as parameters.
+
+### Optional parameters
+
+##### appbarColor:
+This property takes a `Color` property for the appbar.
+
+##### appbarGradient:
+This property takes `Gradient` property for the appbar.
+
 
 ## Guideline for contributors
 Contribution towards our repository is always welcome, we request contributors to create a pull request to the develop branch only.
