@@ -1,7 +1,7 @@
-name: bottom_navigator_animation
-description: A new Flutter project.
+name: floating_bottom_bar
+description: This package provides sliding animation to floating action button located at the center and bottom tab button.
 version: 0.0.1
-homepage:
+homepage: https://github.com/mi-ghanshyam/floating_bottom_bar
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -21,7 +22,7 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
-  - assets/images/
+    - assets/images/
   # To add assets to your package, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

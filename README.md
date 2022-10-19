@@ -1,39 +1,102 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# floating_bottom_bar
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+This package will animate a floating action button at the center and icons at the bottomNavigationBar using [AnimatedContainer](https://api.flutter.dev/flutter/widgets/AnimatedContainer-class.html) and [SlideTransition](https://api.flutter.dev/flutter/widgets/SlideTransition-class.html) respectively.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
 
-## Features
+### Floating Bottom Bar
+![Floating Bottom Bar](https://github.com/mi-ghanshyam/floating_bottom_bar/blob/master/assets/gif/floating_bottom_bar.gif)
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+### Example
+    bottomNavigationBar: AnimatedBottomNavigationBar(
+                  bottomBarItems: [
+                    BottomBarItemsModel(
+                        icon: const Icon(Icons.home, size: example.Dimens.iconNormal),
+                        iconSelected: const Icon(Icons.home, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
+                        title: example.Strings.home,
+                        dotColor: example.AppColors.cherryRed,
+                        onTap: () =>log('Home'),
+                    ),
+                    const BottomBarItemsModel(
+                      icon: Icon(Icons.search, size: example.Dimens.iconNormal),
+                      iconSelected: Icon(Icons.search, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
+                      title: example.Strings.search,
+                      dotColor: example.AppColors.cherryRed,
+                      onTap: () =>log('Search'),
+                    ),
+                    const BottomBarItemsModel(
+                      icon: Icon(Icons.person, size: example.Dimens.iconNormal),
+                      iconSelected: Icon(Icons.person, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
+                      title: example.Strings.person,
+                      dotColor: example.AppColors.cherryRed,
+                      onTap: () =>log('Person'),
+                    ),
+                    const BottomBarItemsModel(
+                      icon: Icon(Icons.settings, size: example.Dimens.iconNormal),
+                      iconSelected: Icon(Icons.settings, color: AppColors.cherryRed, size: example.Dimens.iconNormal),
+                      title: example.Strings.settings,
+                      dotColor: example.AppColors.cherryRed,
+                      onTap: () =>log('Settings'),
+                    ),
+                  ],
+                  bottomBarCenterModel: BottomBarCenterModel(
+                    centerBackgroundColor: example.AppColors.cherryRed,
+                    centerIcon: const FloatingCenterButton(
+                      child: Icon(
+                        Icons.add,
+                        color: AppColors.white,
+                      ),
+                    ),
+                    centerIconChild: [
+                      FloatingCenterButtonChild(
+                        child: const Icon(
+                          Icons.home,
+                          color: AppColors.white,
+                        ),
+                        onTap: () {},
+                      ),
+                      FloatingCenterButtonChild(
+                        child: const Icon(
+                          Icons.home,
+                          color: AppColors.white,
+                        ),
+                        onTap: () {},
+                      ),
+                      FloatingCenterButtonChild(
+                        child: const Icon(
+                          Icons.home,
+                          color: AppColors.white,
+                        ),
+                        onTap: () {},
+                      ),
+                    ],
+                  ),
+                ),
 
-```dart
-const like = 'sample';
-```
+### Required parameters
 
-## Additional information
+##### bottomBarItems:
+This property takes List<BottomBarItemsModel> as a parameter which are use to show the icons in the bottomNavigationBar.
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+##### bottomBarCenterModel:
+BottomBarCenterModel class is model class for bottom menu. It takes icon, iconSelected, title, titleStyle as parameters.
+
+## Guideline for contributors
+Contribution towards our repository is always welcome, we request contributors to create a pull request to the develop branch only.
+
+## Guideline to report an issue/feature request
+It would be great for us if the reporter can share the below things to understand the root cause of the issue.
+- Library version
+- Code snippet
+- Logs if applicable
+- Device specification like (Manufacturer, OS version, etc)
+- Screenshot/video with steps to reproduce the issue
+
+# LICENSE!
+Animated Segment is [MIT-licensed](https://github.com/Mindinventory/animated_segment/blob/master/LICENSE "MIT-licensed").
+
+# Let us know!
+We’d be really happy if you send us links to your projects where you use our component. Just send an email to sales@mindinventory.com And do let us know if you have any questions or suggestion regarding our work.

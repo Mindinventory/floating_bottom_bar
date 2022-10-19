@@ -1,38 +1,41 @@
-part of bottom_navigator_animation;
+part of floating_bottom_bar;
 
+/// [CircularNotchedAndCorneredRectangle] A shape with a notch in its outline.
 class CircularNotchedAndCorneredRectangle extends NotchedShape {
   final Animation<double>? animation;
   final NotchSmoothness notchSmoothness;
   final GapLocation gapLocation;
-  final double leftCornerRadius;
-  final double rightCornerRadius;
+
+  // final double leftCornerRadius;
+  // final double rightCornerRadius;
+  final double cornerRadius;
 
   CircularNotchedAndCorneredRectangle({
     required this.notchSmoothness,
     required this.gapLocation,
-    required this.leftCornerRadius,
-    required this.rightCornerRadius,
+    required this.cornerRadius,
+    // required this.leftCornerRadius,
+    // required this.rightCornerRadius,
     this.animation,
   });
 
   @override
   Path getOuterPath(Rect host, Rect? guest) {
     if (guest == null || !host.overlaps(guest)) {
-      if (this.rightCornerRadius > 0 || this.leftCornerRadius > 0) {
-        double leftCornerRadius = this.leftCornerRadius * (animation?.value ?? 1);
-        double rightCornerRadius = this.rightCornerRadius * (animation?.value ?? 1);
+      if (cornerRadius > 0) {
+        double cornerRadius = this.cornerRadius * (animation?.value ?? 1);
         return Path()
           ..moveTo(host.left, host.bottom)
-          ..lineTo(host.left, host.top + leftCornerRadius)
+          ..lineTo(host.left, host.top + cornerRadius)
           ..arcToPoint(
-            Offset(host.left + leftCornerRadius, host.top),
-            radius: Radius.circular(leftCornerRadius),
+            Offset(host.left + cornerRadius, host.top),
+            radius: Radius.circular(cornerRadius),
             clockwise: true,
           )
-          ..lineTo(host.right - rightCornerRadius, host.top)
+          ..lineTo(host.right - cornerRadius, host.top)
           ..arcToPoint(
-            Offset(host.right, host.top + rightCornerRadius),
-            radius: Radius.circular(rightCornerRadius),
+            Offset(host.right, host.top + cornerRadius),
+            radius: Radius.circular(cornerRadius),
             clockwise: true,
           )
           ..lineTo(host.right, host.bottom)
@@ -43,8 +46,8 @@ class CircularNotchedAndCorneredRectangle extends NotchedShape {
     }
 
     double notchRadius = guest.width / 2 * (animation?.value ?? 1);
-    double leftCornerRadius = this.leftCornerRadius * (animation?.value ?? 1);
-    double rightCornerRadius = this.rightCornerRadius * (animation?.value ?? 1);
+    double leftCornerRadius = cornerRadius * (animation?.value ?? 1);
+    double rightCornerRadius = cornerRadius * (animation?.value ?? 1);
 
     final double s1 = notchSmoothness.s1;
     final double s2 = notchSmoothness.s2;
