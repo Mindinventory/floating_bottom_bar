@@ -58,6 +58,7 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
                 FloatingActionButtonLocation.centerDocked,
             body: const Center(child: Text('Text')),
             bottomNavigationBar: AnimatedBottomNavigationBar(
+              appbarColor: Colors.white,
               bottomBarItems: [
                 BottomBarItemsModel(
                   icon: const Icon(Icons.home, size: example.Dimens.iconNormal),

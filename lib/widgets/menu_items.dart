@@ -3,9 +3,10 @@ part of floating_bottom_bar;
 /// [BottomBarItems] class is bottom menu item.
 /// Each menu is [BottomBarItemsChild] class.
 class BottomBarItems extends StatefulWidget {
-  const BottomBarItems({required this.bottomBarItemsList, Key? key})
+  const BottomBarItems({required this.bottomBarItemsList, this.appbarColor = Colors.white, Key? key})
       : super(key: key);
   final List<BottomBarItemsModel> bottomBarItemsList;
+  final Color appbarColor;
 
   @override
   State<BottomBarItems> createState() => _BottomBarItemsState();
@@ -48,7 +49,7 @@ class _BottomBarItemsState extends State<BottomBarItems> {
         ),
         clipBehavior: Clip.antiAlias,
         child: Container(
-          color: AppColors.white1,
+          color: widget.appbarColor,
           child: SizedBox(
             child: Row(
               children: _listBottomBarItemsChild,
