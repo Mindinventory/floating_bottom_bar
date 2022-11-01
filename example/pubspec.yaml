@@ -2,6 +2,7 @@ name: floating_bottom_bar
 description: This package provides sliding animation to floating action button located at the center and bottom tab button.
 version: 0.0.2
 repository: https://github.com/mi-ghanshyam/floating_bottom_bar
+issue_tracker: https://github.com/mi-ghanshyam/floating_bottom_bar/issues
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
