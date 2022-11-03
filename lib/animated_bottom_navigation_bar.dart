@@ -43,17 +43,17 @@ part 'widgets/menu_items_child.dart';
 class AnimatedBottomNavigationBar extends StatefulWidget {
   const AnimatedBottomNavigationBar({
     required this.bottomBarCenterModel,
-    required this.bottomBarItems,
-    this.appbarColor = Colors.white,
-    this.appbarGradient,
+    required this.bottomBar,
+    this.barColor = Colors.white,
+    this.barGradient,
 
 
     Key? key,
   }) : super(key: key);
-  final List<BottomBarItemsModel> bottomBarItems;
+  final List<BottomBarItemsModel> bottomBar;
   final BottomBarCenterModel bottomBarCenterModel;
-  final Color appbarColor;
-  final Gradient? appbarGradient;
+  final Color barColor;
+  final Gradient? barGradient;
 
   @override
   _AnimatedBottomNavigationBarState createState() =>
@@ -82,9 +82,9 @@ class _AnimatedBottomNavigationBarState
         alignment: Alignment.bottomCenter,
         children: [
           BottomBarItems(
-            appbarColor: widget.appbarColor,
-            bottomBarItemsList: widget.bottomBarItems,
-            appbarGradient: widget.appbarGradient,
+            barColor: widget.barColor,
+            bottomBarItemsList: widget.bottomBar,
+            barGradient: widget.barGradient,
           ),
           AnimatedButton(
             bottomBarCenterModel: widget.bottomBarCenterModel,
@@ -99,9 +99,9 @@ class _AnimatedBottomNavigationBarState
 
   /// Check validations like maximum items exceed and item count is even.
   void _checkValidations() {
-    assert(widget.bottomBarItems.length <= Dimens.maximumItems,
+    assert(widget.bottomBar.length <= Dimens.maximumItems,
         Strings.menuItemsMaximum);
     assert(
-        isEvenCount(widget.bottomBarItems.length), Strings.menuItemsMustBeEven);
+        isEvenCount(widget.bottomBar.length), Strings.menuItemsMustBeEven);
   }
 }

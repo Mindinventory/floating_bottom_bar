@@ -5,13 +5,13 @@ part of floating_bottom_bar;
 class BottomBarItems extends StatefulWidget {
   const BottomBarItems(
       {required this.bottomBarItemsList,
-      this.appbarColor = Colors.white,
-      this.appbarGradient,
+      this.barColor = Colors.white,
+      this.barGradient,
       Key? key})
       : super(key: key);
   final List<BottomBarItemsModel> bottomBarItemsList;
-  final Color appbarColor;
-  final Gradient? appbarGradient;
+  final Color barColor;
+  final Gradient? barGradient;
 
   @override
   State<BottomBarItems> createState() => _BottomBarItemsState();
@@ -53,9 +53,9 @@ class _BottomBarItemsState extends State<BottomBarItems> {
             notchMargin: Dimens.notchMargin,
           ),
           clipBehavior: Clip.antiAlias,
-          child: widget.appbarGradient == null
+          child: widget.barGradient == null
               ? Container(
-                  color: widget.appbarColor,
+                  color: widget.barColor,
                   child: SizedBox(
                     child: Row(
                       children: _listBottomBarItemsChild,
@@ -64,7 +64,7 @@ class _BottomBarItemsState extends State<BottomBarItems> {
                   ),
                 )
               : Container(
-                  decoration: BoxDecoration(gradient: widget.appbarGradient),
+                  decoration: BoxDecoration(gradient: widget.barGradient),
                   child: SizedBox(
                     child: Row(
                       children: _listBottomBarItemsChild,
