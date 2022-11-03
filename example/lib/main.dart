@@ -65,7 +65,7 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
                   stops: [0.2, 0.8],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter),
-              bottomBarItems: [
+              bottomBar: [
                 BottomBarItemsModel(
                   icon: const Icon(Icons.home, size: example.Dimens.iconNormal),
                   iconSelected: const Icon(Icons.home,
@@ -112,7 +112,7 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
                       log('Settings');
                     }),
               ],
-              bottomBarCenterModel: BottomBarCenterModel(
+              bottomBarCenter: BottomBarCenterModel(
                 centerBackgroundColor: example.AppColors.cherryRed,
                 centerIcon: const FloatingCenterButton(
                   child: Icon(

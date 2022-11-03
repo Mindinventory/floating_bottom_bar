@@ -112,7 +112,7 @@ class AnimatedButtonState extends State<AnimatedButton> {
     Offset _position = _renderBox.localToGlobal(Offset.zero);
     _overlayEntry = OverlayEntry(builder: (context) {
       return CenterButtons(
-        bottomBarCenterModel: widget.bottomBarCenterModel,
+        bottomBarCenter: widget.bottomBarCenterModel,
         position: _position,
         onTap: () {},
         key: _centerButtonsState,

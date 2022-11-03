@@ -29,10 +29,6 @@ bottomNavigationBar:
 
 ```
 #
-#
-## Guideline for contributors
-Contribution towards our repository is always welcome, we request contributors to create a pull request to the **develop** branch only.
-#
 ## LICENSE
 
 Floating Bottom Bar is [MIT-licensed](https://github.com/Mindinventory/animated_segment/blob/master/LICENSE "MIT-licensed").

@@ -43,14 +43,14 @@ part 'widgets/menu_items_child.dart';
 class AnimatedBottomNavigationBar extends StatefulWidget {
   const AnimatedBottomNavigationBar({
     required this.bottomBarCenterModel,
-    required this.bottomBarItems,
+    required this.bottomBar,
     this.appbarColor = Colors.white,
     this.appbarGradient,
 
 
     Key? key,
   }) : super(key: key);
-  final List<BottomBarItemsModel> bottomBarItems;
+  final List<BottomBarItemsModel> bottomBar;
   final BottomBarCenterModel bottomBarCenterModel;
   final Color appbarColor;
   final Gradient? appbarGradient;
@@ -83,7 +83,7 @@ class _AnimatedBottomNavigationBarState
         children: [
           BottomBarItems(
             appbarColor: widget.appbarColor,
-            bottomBarItemsList: widget.bottomBarItems,
+            bottomBarItemsList: widget.bottomBar,
             appbarGradient: widget.appbarGradient,
           ),
           AnimatedButton(
@@ -99,9 +99,9 @@ class _AnimatedBottomNavigationBarState
 
   /// Check validations like maximum items exceed and item count is even.
   void _checkValidations() {
-    assert(widget.bottomBarItems.length <= Dimens.maximumItems,
+    assert(widget.bottomBar.length <= Dimens.maximumItems,
         Strings.menuItemsMaximum);
     assert(
-        isEvenCount(widget.bottomBarItems.length), Strings.menuItemsMustBeEven);
+        isEvenCount(widget.bottomBar.length), Strings.menuItemsMustBeEven);
   }
 }

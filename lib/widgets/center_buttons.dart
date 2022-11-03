@@ -2,13 +2,13 @@ part of floating_bottom_bar;
 
 class CenterButtons extends StatefulWidget {
   const CenterButtons({
-    required this.bottomBarCenterModel,
+    required this.bottomBarCenter,
     required this.onTap,
     required this.position,
     Key? key,
   }) : super(key: key);
 
-  final BottomBarCenterModel bottomBarCenterModel;
+  final BottomBarCenterModel bottomBarCenter;
   final VoidCallback onTap;
   final Offset position;
 
@@ -65,7 +65,7 @@ class _CenterButtonsState extends State<CenterButtons> {
                         borderRadius:
                             BorderRadius.circular(Dimens.borderRadius),
                         color:
-                            widget.bottomBarCenterModel.centerBackgroundColor,
+                            widget.bottomBarCenter.centerBackgroundColor,
                         // color: AppColors.lightPink
                       ),
                       curve: Curves.easeOut,
@@ -73,7 +73,7 @@ class _CenterButtonsState extends State<CenterButtons> {
                           milliseconds: (value > Dimens.buttonHeight)
                               ? Dimens.animationDurationNormal
                               : (Dimens.animationDurationHigh *
-                                  widget.bottomBarCenterModel.centerIconChild
+                                  widget.bottomBarCenter.centerIconChild
                                       .length)),
                       child: AnimatedList(
                         key: _listOfWidgetsKey,
@@ -81,7 +81,7 @@ class _CenterButtonsState extends State<CenterButtons> {
                           return CenterButtonChildAnimation(
                             animation: animation,
                             child: widget
-                                .bottomBarCenterModel.centerIconChild[index],
+                                .bottomBarCenter.centerIconChild[index],
                           );
                         },
                       ),
@@ -102,7 +102,7 @@ class _CenterButtonsState extends State<CenterButtons> {
   void _insertItemInAnimatedList() {
     var future = Future(() {});
     for (var index = 0;
-        index < widget.bottomBarCenterModel.centerIconChild.length;
+        index < widget.bottomBarCenter.centerIconChild.length;
         index++) {
       future = future.then((_) {
         return Future.delayed(
@@ -115,7 +115,7 @@ class _CenterButtonsState extends State<CenterButtons> {
 
   /// [_removeItemFromAnimatedList] method removes element from [AnimatedList].
   void _removeItemFromAnimatedList() {
-    for (var index = widget.bottomBarCenterModel.centerIconChild.length - 1;
+    for (var index = widget.bottomBarCenter.centerIconChild.length - 1;
         index >= 0;
         index--) {
       _listOfWidgetsKey.currentState?.removeItem(
@@ -123,7 +123,7 @@ class _CenterButtonsState extends State<CenterButtons> {
         (_, animation) {
           return CenterButtonChildAnimation(
             animation: animation,
-            child: widget.bottomBarCenterModel.centerIconChild[index],
+            child: widget.bottomBarCenter.centerIconChild[index],
           );
         },
         duration: const Duration(milliseconds: Dimens.animationDurationHigh),
@@ -135,7 +135,7 @@ class _CenterButtonsState extends State<CenterButtons> {
     SchedulerBinding.instance?.addPostFrameCallback((timeStamp) {
       _opacity.value = Dimens.opacityHigh;
       _height.value = Dimens.buttonHeight *
-          widget.bottomBarCenterModel.centerIconChild.length;
+          widget.bottomBarCenter.centerIconChild.length;
       _insertItemInAnimatedList();
     });
   }
