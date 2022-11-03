@@ -59,8 +59,8 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
                 FloatingActionButtonLocation.centerDocked,
             body: const Center(child: Text('Hello World!'),),
             bottomNavigationBar: AnimatedBottomNavigationBar(
-              appbarColor: Colors.white,
-              appbarGradient: const LinearGradient(
+              barColor: Colors.white,
+              barGradient: const LinearGradient(
                   colors: [Colors.white, Colors.white12],
                   stops: [0.2, 0.8],
                   begin: Alignment.topCenter,

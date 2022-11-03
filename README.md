@@ -14,8 +14,8 @@ This package will animate a floating action button at the center and icons at th
 | ------ | ------ |
 | bottomBar | *Yes* |
 | bottomBarCenter | *Yes* |
-| appbarColor | *No* |
-| appbarGradient |*No* |
+| barColor | *No* |
+| barGradient |*No* |
 
 
 
