@@ -3,9 +3,15 @@ part of floating_bottom_bar;
 /// [BottomBarItems] class is bottom menu item.
 /// Each menu is [BottomBarItemsChild] class.
 class BottomBarItems extends StatefulWidget {
-  const BottomBarItems({required this.bottomBarItemsList, Key? key})
+  const BottomBarItems(
+      {required this.bottomBarItemsList,
+      this.appbarColor = Colors.white,
+      this.appbarGradient,
+      Key? key})
       : super(key: key);
   final List<BottomBarItemsModel> bottomBarItemsList;
+  final Color appbarColor;
+  final Gradient? appbarGradient;
 
   @override
   State<BottomBarItems> createState() => _BottomBarItemsState();
@@ -35,28 +41,36 @@ class _BottomBarItemsState extends State<BottomBarItems> {
     return Align(
       alignment: Alignment.bottomCenter,
       child: PhysicalShape(
-        elevation: Dimens.elevation,
-        color: AppColors.transparent,
-        clipper: CircularNotchedAndCorneredRectangleClipper(
-          shape: CircularNotchedAndCorneredRectangle(
-            notchSmoothness: NotchSmoothness.defaultEdge,
-            gapLocation: GapLocation.center,
-            cornerRadius: Dimens.containerCornerCurve,
-          ),
-          geometry: geometryListenable,
-          notchMargin: Dimens.notchMargin,
-        ),
-        clipBehavior: Clip.antiAlias,
-        child: Container(
-          color: AppColors.white1,
-          child: SizedBox(
-            child: Row(
-              children: _listBottomBarItemsChild,
+          elevation: Dimens.elevation,
+          color: AppColors.transparent,
+          clipper: CircularNotchedAndCorneredRectangleClipper(
+            shape: CircularNotchedAndCorneredRectangle(
+              notchSmoothness: NotchSmoothness.defaultEdge,
+              gapLocation: GapLocation.center,
+              cornerRadius: Dimens.containerCornerCurve,
             ),
-            height: Dimens.containerHeight,
+            geometry: geometryListenable,
+            notchMargin: Dimens.notchMargin,
           ),
-        ),
-      ),
+          clipBehavior: Clip.antiAlias,
+          child: widget.appbarGradient == null
+              ? Container(
+                  color: widget.appbarColor,
+                  child: SizedBox(
+                    child: Row(
+                      children: _listBottomBarItemsChild,
+                    ),
+                    height: Dimens.containerHeight,
+                  ),
+                )
+              : Container(
+                  decoration: BoxDecoration(gradient: widget.appbarGradient),
+                  child: SizedBox(
+                    child: Row(
+                      children: _listBottomBarItemsChild,
+                    ),
+                    height: Dimens.containerHeight,
+                  ))),
     );
   }
 

@@ -46,26 +46,32 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
         children: [
           Scaffold(
             appBar: AppBar(
-              backgroundColor: example.AppColors.cherryRed,
+              elevation: 3,
+              backgroundColor: Colors.black,
               title: Text(widget.title),
             ),
-            backgroundColor: example.AppColors.lightPink,
+            backgroundColor: Colors.white70,
             floatingActionButton: const SizedBox(
               height: example.Dimens.heightNormal,
               width: example.Dimens.widthNormal,
             ),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
-            body: const Center(child: Text('Text')),
+            body: const Center(child: Text('Hello World!'),),
             bottomNavigationBar: AnimatedBottomNavigationBar(
+              appbarColor: Colors.white,
+              appbarGradient: const LinearGradient(
+                  colors: [Colors.white, Colors.white12],
+                  stops: [0.2, 0.8],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter),
               bottomBarItems: [
                 BottomBarItemsModel(
                   icon: const Icon(Icons.home, size: example.Dimens.iconNormal),
                   iconSelected: const Icon(Icons.home,
-                      color: AppColors.cherryRed,
-                      size: example.Dimens.iconNormal),
+                      color: Colors.red, size: example.Dimens.iconNormal),
                   title: example.Strings.home,
-                  dotColor: example.AppColors.cherryRed,
+                  dotColor: Colors.amberAccent,
                   onTap: () {
                     log('Home');
                   },
@@ -117,21 +123,21 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
                 centerIconChild: [
                   FloatingCenterButtonChild(
                     child: const Icon(
-                      Icons.home,
+                      Icons.adb,
                       color: AppColors.white,
                     ),
                     onTap: () => log('Item1'),
                   ),
                   FloatingCenterButtonChild(
                     child: const Icon(
-                      Icons.home,
+                      Icons.access_alarm,
                       color: AppColors.white,
                     ),
                     onTap: () => log('Item2'),
                   ),
                   FloatingCenterButtonChild(
                     child: const Icon(
-                      Icons.home,
+                      Icons.account_balance_rounded,
                       color: AppColors.white,
                     ),
                     onTap: () => log('Item3'),
