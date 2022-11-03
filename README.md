@@ -1,4 +1,3 @@
-
 # Floating Bottom Bar
 
 This package will animate a floating action button at the center and icons at the bottomNavigationBar using [AnimatedContainer](https://api.flutter.dev/flutter/widgets/AnimatedContainer-class.html) and [SlideTransition](https://api.flutter.dev/flutter/widgets/SlideTransition-class.html) respectively.
@@ -7,7 +6,7 @@ This package will animate a floating action button at the center and icons at th
 
   
 
-![Floating Bottom Bar](https://github.com/Mindinventory/animated_segment/blob/master/assets/animated_segment.gif)
+![Floating Bottom Bar](https://github.com/Mindinventory/floating_bottom_bar/blob/master/assets/gif/floating_bottom_bar.gif)
 
   
 
