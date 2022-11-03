@@ -33,22 +33,6 @@ bottomNavigationBar:
 ## Guideline for contributors
 Contribution towards our repository is always welcome, we request contributors to create a pull request to the **develop** branch only.
 #
-
-## Guideline to report an issue/feature request
-It would be great for us if the reporter can share the below things to understand the root cause of the issue.
->Library version
-#
->Code snippet
-#
->Logs if applicable
-#
->Device specification like (Manufacturer, OS version, etc)
-#
->Screenshot/video with steps to reproduce the issue
-
-#
-#
-#
 ## LICENSE
 
 Floating Bottom Bar is [MIT-licensed](https://github.com/Mindinventory/animated_segment/blob/master/LICENSE "MIT-licensed").
