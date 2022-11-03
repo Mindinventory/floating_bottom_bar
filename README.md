@@ -5,6 +5,8 @@ This package will animate a floating action button at the center and icons at th
 
 ## _Animate your FloatingAction button_
 
+  
+
 ![Floating Bottom Bar](https://github.com/Mindinventory/animated_segment/blob/master/assets/animated_segment.gif)
 
   
@@ -14,15 +16,10 @@ This package will animate a floating action button at the center and icons at th
   
 
 |Property | Required |
-
 | ------ | ------ |
-
 | bottomBar |  *Yes*  |
-
 | bottomBarCenter |  *Yes*  |
-
 | barColor |  *No*  |
-
 | barGradient |*No*  |
 
 ## How to
@@ -30,15 +27,10 @@ This package will animate a floating action button at the center and icons at th
   
 
 ```dart
-
 bottomNavigationBar:
-
 AnimatedBottomNavigationBar(
-
 // Check example code after cloning the repo
-
 )
-
 ```
 ## Guideline for contributors
 Contribution towards our repository is always welcome, we request contributors to create a pull request to the develop branch only.
