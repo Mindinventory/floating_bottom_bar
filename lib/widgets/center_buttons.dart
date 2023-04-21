@@ -16,6 +16,8 @@ class CenterButtons extends StatefulWidget {
   State<CenterButtons> createState() => _CenterButtonsState();
 }
 
+bool isCloseBtnAdded = false;
+
 class _CenterButtonsState extends State<CenterButtons> {
   final GlobalKey<AnimatedListState> _listOfWidgetsKey =
       GlobalKey<AnimatedListState>();
@@ -64,24 +66,25 @@ class _CenterButtonsState extends State<CenterButtons> {
                       decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(Dimens.borderRadius),
-                        color:
-                            widget.bottomBarCenter.centerBackgroundColor,
+                        color: widget.bottomBarCenter.centerBackgroundColor,
                         // color: AppColors.lightPink
                       ),
                       curve: Curves.easeOut,
+
+                      /// 1
                       duration: Duration(
                           milliseconds: (value > Dimens.buttonHeight)
                               ? Dimens.animationDurationNormal
                               : (Dimens.animationDurationHigh *
-                                  widget.bottomBarCenter.centerIconChild
-                                      .length)),
+                                  widget
+                                      .bottomBarCenter.centerIconChild.length)),
                       child: AnimatedList(
                         key: _listOfWidgetsKey,
                         itemBuilder: (BuildContext context, index, animation) {
                           return CenterButtonChildAnimation(
                             animation: animation,
-                            child: widget
-                                .bottomBarCenter.centerIconChild[index],
+                            child:
+                                widget.bottomBarCenter.centerIconChild[index],
                           );
                         },
                       ),
@@ -98,9 +101,26 @@ class _CenterButtonsState extends State<CenterButtons> {
     );
   }
 
+  Future<void> _addCloseButton() async {
+    if (!isCloseBtnAdded) {
+      widget.bottomBarCenter.centerIconChild.add(
+        FloatingCenterButtonChild(
+          child: const Icon(
+            Icons.close,
+            color: AppColors.white,
+          ),
+          onTap: () {},
+        ),
+      );
+    }
+    isCloseBtnAdded = true;
+  }
+
   /// [_insertItemInAnimatedList] method inserts element in [AnimatedList].
   void _insertItemInAnimatedList() {
     var future = Future(() {});
+
+    /// 4
     for (var index = 0;
         index < widget.bottomBarCenter.centerIconChild.length;
         index++) {
@@ -132,11 +152,15 @@ class _CenterButtonsState extends State<CenterButtons> {
   }
 
   void _initialize() {
-    SchedulerBinding.instance?.addPostFrameCallback((timeStamp) {
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
       _opacity.value = Dimens.opacityHigh;
-      _height.value = Dimens.buttonHeight *
-          widget.bottomBarCenter.centerIconChild.length;
-      _insertItemInAnimatedList();
+
+      /// 2
+      _addCloseButton().then((_) {
+        _height.value =
+            Dimens.buttonHeight * widget.bottomBarCenter.centerIconChild.length;
+        _insertItemInAnimatedList();
+      });
     });
   }
 }

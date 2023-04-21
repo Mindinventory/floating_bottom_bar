@@ -1,6 +1,6 @@
 part of floating_bottom_bar;
 
-/// [BottomBarItemsChild] class takes [index],[BottomBarItemsModel],[widgetWidth],[onTapCallback] parameters
+/// [BottomBarItemsChild] class takes [index],[BottomBarItem],[widgetWidth],[onTapCallback] parameters
 /// We will Display each menu item in bottom navigation.
 class BottomBarItemsChild extends StatefulWidget {
   const BottomBarItemsChild({
@@ -10,16 +10,16 @@ class BottomBarItemsChild extends StatefulWidget {
     required this.onTapCallback,
     Key? key,
   }) : super(key: key);
-  final BottomBarItemsModel bottomBarItemsModel;
+  final BottomBarItem bottomBarItemsModel;
   final Function(int index) onTapCallback;
   final double widgetWidth;
   final int index;
 
   @override
-  _BottomBarItemsChildState createState() => _BottomBarItemsChildState();
+  BottomBarItemsChildState createState() => BottomBarItemsChildState();
 }
 
-class _BottomBarItemsChildState extends State<BottomBarItemsChild>
+class BottomBarItemsChildState extends State<BottomBarItemsChild>
     with TickerProviderStateMixin {
   final ValueNotifier<double> _opacity = ValueNotifier(Dimens.maxOpacity);
 
@@ -117,20 +117,23 @@ class _BottomBarItemsChildState extends State<BottomBarItemsChild>
                         package: Strings.bottomNavigatorAnimation,
                         width: Dimens.defaultDotSize,
                         height: Dimens.defaultDotSize,
-                        color: widget.bottomBarItemsModel.dotColor,
+                        colorFilter: ColorFilter.mode(
+                          widget.bottomBarItemsModel.dotColor,
+                          BlendMode.srcIn,
+                        ),
                       ),
                     ),
                   ),
                   ValueListenableBuilder<double>(
                     builder: (context, value, child) {
                       return AnimatedOpacity(
-                        child: Text(
-                          widget.bottomBarItemsModel.title ?? '',
-                          style: widget.bottomBarItemsModel.titleStyle,
-                        ),
                         opacity: value,
                         duration: const Duration(
                           milliseconds: Dimens.menuItemAnimationDuration,
+                        ),
+                        child: Text(
+                          widget.bottomBarItemsModel.title ?? '',
+                          style: widget.bottomBarItemsModel.titleStyle,
                         ),
                       );
                     },

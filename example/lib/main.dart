@@ -38,6 +38,13 @@ class BottomNavigatorExample extends StatefulWidget {
 
 class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
   bool circleButtonToggle = false;
+  List<Color> listOfColor = [
+    const Color(0xFFF2B5BA),
+    Colors.orange,
+    Colors.amber,
+    Colors.deepOrangeAccent
+  ];
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -47,72 +54,80 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
           Scaffold(
             appBar: AppBar(
               elevation: 3,
-              backgroundColor: Colors.black,
+              backgroundColor: example.AppColors.cherryRed,
               title: Text(widget.title),
             ),
-            backgroundColor: Colors.white70,
+            backgroundColor: listOfColor[index],
             floatingActionButton: const SizedBox(
               height: example.Dimens.heightNormal,
               width: example.Dimens.widthNormal,
             ),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
-            body: const Center(child: Text('Hello World!'),),
             bottomNavigationBar: AnimatedBottomNavigationBar(
               barColor: Colors.white,
-              barGradient: const LinearGradient(
-                  colors: [Colors.white, Colors.white12],
-                  stops: [0.2, 0.8],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter),
               bottomBar: [
-                BottomBarItemsModel(
+                BottomBarItem(
                   icon: const Icon(Icons.home, size: example.Dimens.iconNormal),
                   iconSelected: const Icon(Icons.home,
-                      color: Colors.red, size: example.Dimens.iconNormal),
+                      color: example.AppColors.cherryRed,
+                      size: example.Dimens.iconNormal),
                   title: example.Strings.home,
-                  dotColor: Colors.amberAccent,
-                  onTap: () {
-                    log('Home');
+                  dotColor: example.AppColors.cherryRed,
+                  onTap: (value) {
+                    setState(() {
+                      index = value;
+                    });
+                    log('Home $value');
                   },
                 ),
-                BottomBarItemsModel(
+                BottomBarItem(
                   icon:
-                      const Icon(Icons.search, size: example.Dimens.iconNormal),
-                  iconSelected: const Icon(Icons.search,
-                      color: AppColors.cherryRed,
+                      const Icon(Icons.photo, size: example.Dimens.iconNormal),
+                  iconSelected: const Icon(Icons.photo,
+                      color: example.AppColors.cherryRed,
                       size: example.Dimens.iconNormal),
                   title: example.Strings.search,
                   dotColor: example.AppColors.cherryRed,
-                  onTap: () {
-                    log('Search');
+                  onTap: (value) {
+                    setState(() {
+                      index = value;
+                    });
+                    log('Search $value');
                   },
                 ),
-                BottomBarItemsModel(
+                BottomBarItem(
                   icon:
                       const Icon(Icons.person, size: example.Dimens.iconNormal),
                   iconSelected: const Icon(Icons.person,
-                      color: AppColors.cherryRed,
+                      color: example.AppColors.cherryRed,
                       size: example.Dimens.iconNormal),
                   title: example.Strings.person,
                   dotColor: example.AppColors.cherryRed,
-                  onTap: () {
-                    log('Profile');
+                  onTap: (value) {
+                    setState(() {
+                      index = value;
+                    });
+                    log('Profile $value');
                   },
                 ),
-                BottomBarItemsModel(
-                    icon: const Icon(Icons.settings,
-                        size: example.Dimens.iconNormal),
-                    iconSelected: const Icon(Icons.settings,
-                        color: AppColors.cherryRed,
-                        size: example.Dimens.iconNormal),
-                    title: example.Strings.settings,
-                    dotColor: example.AppColors.cherryRed,
-                    onTap: () {
-                      log('Settings');
-                    }),
+                BottomBarItem(
+                  icon: const Icon(Icons.settings,
+                      size: example.Dimens.iconNormal),
+                  iconSelected: const Icon(Icons.settings,
+                      color: example.AppColors.cherryRed,
+                      size: example.Dimens.iconNormal),
+                  title: example.Strings.settings,
+                  dotColor: example.AppColors.cherryRed,
+                  onTap: (value) {
+                    setState(() {
+                      index = value;
+                    });
+                    log('Settings $value');
+                  },
+                ),
               ],
-              bottomBarCenter: BottomBarCenterModel(
+              bottomBarCenterModel: BottomBarCenterModel(
                 centerBackgroundColor: example.AppColors.cherryRed,
                 centerIcon: const FloatingCenterButton(
                   child: Icon(
@@ -123,7 +138,7 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
                 centerIconChild: [
                   FloatingCenterButtonChild(
                     child: const Icon(
-                      Icons.adb,
+                      Icons.home,
                       color: AppColors.white,
                     ),
                     onTap: () => log('Item1'),
@@ -137,7 +152,7 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
                   ),
                   FloatingCenterButtonChild(
                     child: const Icon(
-                      Icons.account_balance_rounded,
+                      Icons.ac_unit_outlined,
                       color: AppColors.white,
                     ),
                     onTap: () => log('Item3'),

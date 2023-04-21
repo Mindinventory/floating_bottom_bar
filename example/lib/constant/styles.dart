@@ -1,6 +1,6 @@
-import 'package:example/constant/colors.dart';
 import 'package:flutter/material.dart';
 
+import 'colors.dart';
 import 'dimens.dart';
 
 abstract class Fonts {

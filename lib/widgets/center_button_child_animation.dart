@@ -11,11 +11,11 @@ class CenterButtonChildAnimation extends StatefulWidget {
   final Animation<double> animation;
 
   @override
-  _CenterButtonChildAnimationState createState() =>
-      _CenterButtonChildAnimationState();
+  CenterButtonChildAnimationState createState() =>
+      CenterButtonChildAnimationState();
 }
 
-class _CenterButtonChildAnimationState
+class CenterButtonChildAnimationState
     extends State<CenterButtonChildAnimation> {
   @override
   Widget build(BuildContext context) {

@@ -46,21 +46,19 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     required this.bottomBar,
     this.barColor = Colors.white,
     this.barGradient,
-
-
     Key? key,
   }) : super(key: key);
-  final List<BottomBarItemsModel> bottomBar;
+  final List<BottomBarItem> bottomBar;
   final BottomBarCenterModel bottomBarCenterModel;
   final Color barColor;
   final Gradient? barGradient;
 
   @override
-  _AnimatedBottomNavigationBarState createState() =>
-      _AnimatedBottomNavigationBarState();
+  AnimatedBottomNavigationBarState createState() =>
+      AnimatedBottomNavigationBarState();
 }
 
-class _AnimatedBottomNavigationBarState
+class AnimatedBottomNavigationBarState
     extends State<AnimatedBottomNavigationBar> with TickerProviderStateMixin {
   @override
   void didChangeDependencies() {
@@ -73,7 +71,6 @@ class _AnimatedBottomNavigationBarState
     super.initState();
   }
 
-  ///
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
@@ -101,7 +98,6 @@ class _AnimatedBottomNavigationBarState
   void _checkValidations() {
     assert(widget.bottomBar.length <= Dimens.maximumItems,
         Strings.menuItemsMaximum);
-    assert(
-        isEvenCount(widget.bottomBar.length), Strings.menuItemsMustBeEven);
+    assert(isEvenCount(widget.bottomBar.length), Strings.menuItemsMustBeEven);
   }
 }

@@ -1,9 +1,7 @@
-## [0.0.1] - 2022-01-24
+## 0.0.2
+
+* Fixed the issue numbers [#2](https://github.com/Mindinventory/floating_bottom_bar/issues/2), [#3](https://github.com/Mindinventory/floating_bottom_bar/issues/3).
+
+## 0.0.1
 
 * Initial release.
-
-## [0.0.2] - 2022-11-08
-
-Added `barColor` & `barGradient` for better customization\
-Updated naming conventions\
-Updated default appearance for example code

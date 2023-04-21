@@ -87,9 +87,12 @@ class AnimatedButtonState extends State<AnimatedButton> {
   }
 
   void _handleOnTap() {
-    if (_circleButtonAnimationState == CircleButtonAnimationState.running)
+    if (_circleButtonAnimationState == CircleButtonAnimationState.running) {
       return;
+    }
     _circleButtonAnimationState = CircleButtonAnimationState.running;
+
+    /// 3
     Future.delayed(
         Duration(
             milliseconds: Dimens.animationDurationHigh *
@@ -107,13 +110,13 @@ class AnimatedButtonState extends State<AnimatedButton> {
   }
 
   void _showCenterButtons() {
-    RenderBox _renderBox = _floatingCenterButtonStateKey.currentContext
+    RenderBox renderBox = _floatingCenterButtonStateKey.currentContext
         ?.findRenderObject() as RenderBox;
-    Offset _position = _renderBox.localToGlobal(Offset.zero);
+    Offset position = renderBox.localToGlobal(Offset.zero);
     _overlayEntry = OverlayEntry(builder: (context) {
       return CenterButtons(
         bottomBarCenter: widget.bottomBarCenterModel,
-        position: _position,
+        position: position,
         onTap: () {},
         key: _centerButtonsState,
       );

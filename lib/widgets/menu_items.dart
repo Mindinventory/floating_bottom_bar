@@ -9,7 +9,7 @@ class BottomBarItems extends StatefulWidget {
       this.barGradient,
       Key? key})
       : super(key: key);
-  final List<BottomBarItemsModel> bottomBarItemsList;
+  final List<BottomBarItem> bottomBarItemsList;
   final Color barColor;
   final Gradient? barGradient;
 
@@ -41,36 +41,38 @@ class _BottomBarItemsState extends State<BottomBarItems> {
     return Align(
       alignment: Alignment.bottomCenter,
       child: PhysicalShape(
-          elevation: Dimens.elevation,
-          color: AppColors.transparent,
-          clipper: CircularNotchedAndCorneredRectangleClipper(
-            shape: CircularNotchedAndCorneredRectangle(
-              notchSmoothness: NotchSmoothness.defaultEdge,
-              gapLocation: GapLocation.center,
-              cornerRadius: Dimens.containerCornerCurve,
-            ),
-            geometry: geometryListenable,
-            notchMargin: Dimens.notchMargin,
+        elevation: Dimens.elevation,
+        color: AppColors.transparent,
+        clipper: CircularNotchedAndCorneredRectangleClipper(
+          shape: CircularNotchedAndCorneredRectangle(
+            notchSmoothness: NotchSmoothness.defaultEdge,
+            gapLocation: GapLocation.center,
+            cornerRadius: Dimens.containerCornerCurve,
           ),
-          clipBehavior: Clip.antiAlias,
-          child: widget.barGradient == null
-              ? Container(
-                  color: widget.barColor,
-                  child: SizedBox(
-                    child: Row(
-                      children: _listBottomBarItemsChild,
-                    ),
-                    height: Dimens.containerHeight,
+          geometry: geometryListenable,
+          notchMargin: Dimens.notchMargin,
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: widget.barGradient == null
+            ? Container(
+                color: widget.barColor,
+                child: SizedBox(
+                  height: Dimens.containerHeight,
+                  child: Row(
+                    children: _listBottomBarItemsChild,
                   ),
-                )
-              : Container(
-                  decoration: BoxDecoration(gradient: widget.barGradient),
-                  child: SizedBox(
-                    child: Row(
-                      children: _listBottomBarItemsChild,
-                    ),
-                    height: Dimens.containerHeight,
-                  ))),
+                ),
+              )
+            : Container(
+                decoration: BoxDecoration(gradient: widget.barGradient),
+                child: SizedBox(
+                  height: Dimens.containerHeight,
+                  child: Row(
+                    children: _listBottomBarItemsChild,
+                  ),
+                ),
+              ),
+      ),
     );
   }
 
@@ -106,7 +108,8 @@ class _BottomBarItemsState extends State<BottomBarItems> {
   void _handleOnTapCallback(int index, int itemIndex) {
     if (_currentIndex == index) return;
 
-    widget.bottomBarItemsList[itemIndex].onTap?.call();
+    isCloseBtnAdded = false;
+    widget.bottomBarItemsList[itemIndex].onTap?.call(itemIndex);
 
     _lastIndex = _currentIndex;
     _currentIndex = index;
@@ -120,7 +123,7 @@ class _BottomBarItemsState extends State<BottomBarItems> {
     if (_listBottomBarItemsChild.isNotEmpty &&
         _listBottomBarItemsChild[_lastIndex].key is GlobalKey) {
       ((_listBottomBarItemsChild[_lastIndex].key as GlobalKey).currentState
-              as _BottomBarItemsChildState)
+              as BottomBarItemsChildState)
           .reverseAnimation();
     }
   }
@@ -130,14 +133,14 @@ class _BottomBarItemsState extends State<BottomBarItems> {
     if (_listBottomBarItemsChild.isNotEmpty &&
         _listBottomBarItemsChild[_currentIndex].key is GlobalKey) {
       ((_listBottomBarItemsChild[_currentIndex].key as GlobalKey).currentState
-              as _BottomBarItemsChildState)
+              as BottomBarItemsChildState)
           .forwardAnimation();
     }
   }
 
   /// [_setDefaultAnimation] method will select the first item and creates animation.
   void _setDefaultAnimation() {
-    SchedulerBinding.instance?.addPostFrameCallback((timeStamp) {
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       _forwardAnimation();
     });
   }
