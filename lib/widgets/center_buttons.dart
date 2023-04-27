@@ -71,7 +71,6 @@ class _CenterButtonsState extends State<CenterButtons> {
                       ),
                       curve: Curves.easeOut,
 
-                      /// 1
                       duration: Duration(
                           milliseconds: (value > Dimens.buttonHeight)
                               ? Dimens.animationDurationNormal
@@ -120,7 +119,6 @@ class _CenterButtonsState extends State<CenterButtons> {
   void _insertItemInAnimatedList() {
     var future = Future(() {});
 
-    /// 4
     for (var index = 0;
         index < widget.bottomBarCenter.centerIconChild.length;
         index++) {
@@ -155,7 +153,6 @@ class _CenterButtonsState extends State<CenterButtons> {
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
       _opacity.value = Dimens.opacityHigh;
 
-      /// 2
       _addCloseButton().then((_) {
         _height.value =
             Dimens.buttonHeight * widget.bottomBarCenter.centerIconChild.length;

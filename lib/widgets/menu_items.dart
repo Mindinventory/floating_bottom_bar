@@ -3,15 +3,16 @@ part of floating_bottom_bar;
 /// [BottomBarItems] class is bottom menu item.
 /// Each menu is [BottomBarItemsChild] class.
 class BottomBarItems extends StatefulWidget {
-  const BottomBarItems(
-      {required this.bottomBarItemsList,
-      this.barColor = Colors.white,
-      this.barGradient,
-      Key? key})
+  const BottomBarItems({required this.bottomBarItemsList,
+    this.barColor = Colors.white,
+    this.barGradient,
+    this.controller,
+    Key? key,})
       : super(key: key);
   final List<BottomBarItem> bottomBarItemsList;
   final Color barColor;
   final Gradient? barGradient;
+  final FloatingBottomBarController? controller;
 
   @override
   State<BottomBarItems> createState() => _BottomBarItemsState();
@@ -21,6 +22,7 @@ class _BottomBarItemsState extends State<BottomBarItems> {
   late ValueListenable<ScaffoldGeometry> geometryListenable;
   int _currentIndex = 0;
   int _lastIndex = -1;
+  late int centerIndex;
   final List<Widget> _listBottomBarItemsChild = [];
 
   @override
@@ -81,7 +83,6 @@ class _BottomBarItemsState extends State<BottomBarItems> {
     double width = MediaQuery.of(context).size.width /
         (widget.bottomBarItemsList.length + 1);
     _listBottomBarItemsChild.clear();
-    int centerIndex = widget.bottomBarItemsList.length ~/ 2;
     widget.bottomBarItemsList.asMap().forEach((itemIndex, value) {
       if (centerIndex == itemIndex) {
         _listBottomBarItemsChild.add(
@@ -140,6 +141,10 @@ class _BottomBarItemsState extends State<BottomBarItems> {
 
   /// [_setDefaultAnimation] method will select the first item and creates animation.
   void _setDefaultAnimation() {
+    centerIndex = widget.bottomBarItemsList.length ~/ 2;
+    _currentIndex = (centerIndex > (widget.controller?.initialIndex ?? 0))
+        ? (widget.controller?.initialIndex ?? 0)
+        : (widget.controller?.initialIndex ?? 0) + 1;
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       _forwardAnimation();
     });

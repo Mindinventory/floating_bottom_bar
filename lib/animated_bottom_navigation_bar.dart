@@ -46,12 +46,14 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     required this.bottomBar,
     this.barColor = Colors.white,
     this.barGradient,
+    this.controller,
     Key? key,
   }) : super(key: key);
   final List<BottomBarItem> bottomBar;
   final BottomBarCenterModel bottomBarCenterModel;
   final Color barColor;
   final Gradient? barGradient;
+  final FloatingBottomBarController? controller;
 
   @override
   AnimatedBottomNavigationBarState createState() =>
@@ -82,6 +84,7 @@ class AnimatedBottomNavigationBarState
             barColor: widget.barColor,
             bottomBarItemsList: widget.bottomBar,
             barGradient: widget.barGradient,
+            controller: widget.controller,
           ),
           AnimatedButton(
             bottomBarCenterModel: widget.bottomBarCenterModel,
@@ -100,4 +103,10 @@ class AnimatedBottomNavigationBarState
         Strings.menuItemsMaximum);
     assert(isEvenCount(widget.bottomBar.length), Strings.menuItemsMustBeEven);
   }
+}
+
+class FloatingBottomBarController {
+  int initialIndex;
+
+  FloatingBottomBarController({this.initialIndex = 0});
 }

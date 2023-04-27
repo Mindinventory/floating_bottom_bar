@@ -92,7 +92,6 @@ class AnimatedButtonState extends State<AnimatedButton> {
     }
     _circleButtonAnimationState = CircleButtonAnimationState.running;
 
-    /// 3
     Future.delayed(
         Duration(
             milliseconds: Dimens.animationDurationHigh *
