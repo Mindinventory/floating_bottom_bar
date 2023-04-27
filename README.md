@@ -11,7 +11,7 @@ This package will animate a floating action button at the center and icons at th
 ## Usage
 
 ### Example
-    ```dart
+```dart
     bottomNavigationBar: AnimatedBottomNavigationBar(
       barColor: Colors.white,
       controller: FloatingBottomBarController(initialIndex: 1),
@@ -109,7 +109,7 @@ This package will animate a floating action button at the center and icons at th
         ],
       ),
     ),
-    ```
+```
 
 ### Required parameters
 
