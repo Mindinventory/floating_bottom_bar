@@ -18,8 +18,8 @@ class FloatingCenterButtonChild extends StatelessWidget {
         child: CircleAvatar(
           backgroundColor:
               AppColors.white.withOpacity(Dimens.buttonContentOpacityValue),
-          child: child,
           radius: Dimens.circularButtonContentRadius,
+          child: child,
         ),
       ),
     );

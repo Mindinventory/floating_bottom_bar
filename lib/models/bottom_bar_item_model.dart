@@ -1,9 +1,9 @@
 part of floating_bottom_bar;
 
-/// [BottomBarItemsModel] class is model class for bottom menu.
+/// [BottomBarItem] class is model class for bottom menu.
 /// It takes [icon], [iconSelected], [title], [dotColor], [titleStyle] as parameters.
-class BottomBarItemsModel {
-  const BottomBarItemsModel(
+class BottomBarItem {
+  const BottomBarItem(
       {required this.icon,
       required this.iconSelected,
       this.title,
@@ -16,5 +16,5 @@ class BottomBarItemsModel {
   final String? title;
   final Color dotColor;
   final TextStyle? titleStyle;
-  final VoidCallback? onTap;
+  final Function(int value)? onTap;
 }

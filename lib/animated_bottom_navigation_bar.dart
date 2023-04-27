@@ -46,21 +46,21 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     required this.bottomBar,
     this.barColor = Colors.white,
     this.barGradient,
-
-
+    this.controller,
     Key? key,
   }) : super(key: key);
-  final List<BottomBarItemsModel> bottomBar;
+  final List<BottomBarItem> bottomBar;
   final BottomBarCenterModel bottomBarCenterModel;
   final Color barColor;
   final Gradient? barGradient;
+  final FloatingBottomBarController? controller;
 
   @override
-  _AnimatedBottomNavigationBarState createState() =>
-      _AnimatedBottomNavigationBarState();
+  AnimatedBottomNavigationBarState createState() =>
+      AnimatedBottomNavigationBarState();
 }
 
-class _AnimatedBottomNavigationBarState
+class AnimatedBottomNavigationBarState
     extends State<AnimatedBottomNavigationBar> with TickerProviderStateMixin {
   @override
   void didChangeDependencies() {
@@ -73,7 +73,6 @@ class _AnimatedBottomNavigationBarState
     super.initState();
   }
 
-  ///
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
@@ -85,6 +84,7 @@ class _AnimatedBottomNavigationBarState
             barColor: widget.barColor,
             bottomBarItemsList: widget.bottomBar,
             barGradient: widget.barGradient,
+            controller: widget.controller,
           ),
           AnimatedButton(
             bottomBarCenterModel: widget.bottomBarCenterModel,
@@ -101,7 +101,12 @@ class _AnimatedBottomNavigationBarState
   void _checkValidations() {
     assert(widget.bottomBar.length <= Dimens.maximumItems,
         Strings.menuItemsMaximum);
-    assert(
-        isEvenCount(widget.bottomBar.length), Strings.menuItemsMustBeEven);
+    assert(isEvenCount(widget.bottomBar.length), Strings.menuItemsMustBeEven);
   }
+}
+
+class FloatingBottomBarController {
+  int initialIndex;
+
+  FloatingBottomBarController({this.initialIndex = 0});
 }
