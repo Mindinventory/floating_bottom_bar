@@ -119,6 +119,9 @@ This property takes List<BottomBarItemsModel> as a parameter which are use to sh
 ##### bottomBarCenterModel:
 BottomBarCenterModel class is model class for bottom menu. It takes icon, iconSelected, title, titleStyle as parameters.
 
+##### controller:
+FloatingBottomBarController is used to give the initial index to the bottom bar to have the pre selected item form the bottom bar.
+
 ## Guideline for contributors
 Contribution towards our repository is always welcome, we request contributors to create a pull request to the develop branch only.
 
