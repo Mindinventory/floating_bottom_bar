@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
 }
 
 class BottomNavigatorExample extends StatefulWidget {
-  const BottomNavigatorExample({Key? key, required this.title}) : super(key: key);
+  const BottomNavigatorExample({Key? key, required this.title})
+      : super(key: key);
 
   final String title;
 
@@ -37,7 +38,12 @@ class BottomNavigatorExample extends StatefulWidget {
 
 class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
   bool circleButtonToggle = false;
-  List<Color> listOfColor = [const Color(0xFFF2B5BA), Colors.orange, Colors.amber, Colors.deepOrangeAccent];
+  List<Color> listOfColor = [
+    const Color(0xFFF2B5BA),
+    Colors.orange,
+    Colors.amber,
+    Colors.deepOrangeAccent
+  ];
   int index = 2;
 
   @override
@@ -56,14 +62,17 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
               height: example.Dimens.heightNormal,
               width: example.Dimens.widthNormal,
             ),
-            floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerDocked,
             bottomNavigationBar: AnimatedBottomNavigationBar(
               barColor: Colors.white,
               controller: FloatingBottomBarController(initialIndex: 1),
               bottomBar: [
                 BottomBarItem(
                   icon: const Icon(Icons.home, size: example.Dimens.iconNormal),
-                  iconSelected: const Icon(Icons.home, color: example.AppColors.cherryRed, size: example.Dimens.iconNormal),
+                  iconSelected: const Icon(Icons.home,
+                      color: example.AppColors.cherryRed,
+                      size: example.Dimens.iconNormal),
                   title: example.Strings.home,
                   dotColor: example.AppColors.cherryRed,
                   onTap: (value) {
@@ -74,8 +83,11 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
                   },
                 ),
                 BottomBarItem(
-                  icon: const Icon(Icons.photo, size: example.Dimens.iconNormal),
-                  iconSelected: const Icon(Icons.photo, color: example.AppColors.cherryRed, size: example.Dimens.iconNormal),
+                  icon:
+                      const Icon(Icons.photo, size: example.Dimens.iconNormal),
+                  iconSelected: const Icon(Icons.photo,
+                      color: example.AppColors.cherryRed,
+                      size: example.Dimens.iconNormal),
                   title: example.Strings.search,
                   dotColor: example.AppColors.cherryRed,
                   onTap: (value) {
@@ -86,8 +98,11 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
                   },
                 ),
                 BottomBarItem(
-                  icon: const Icon(Icons.person, size: example.Dimens.iconNormal),
-                  iconSelected: const Icon(Icons.person, color: example.AppColors.cherryRed, size: example.Dimens.iconNormal),
+                  icon:
+                      const Icon(Icons.person, size: example.Dimens.iconNormal),
+                  iconSelected: const Icon(Icons.person,
+                      color: example.AppColors.cherryRed,
+                      size: example.Dimens.iconNormal),
                   title: example.Strings.person,
                   dotColor: example.AppColors.cherryRed,
                   onTap: (value) {
@@ -98,8 +113,11 @@ class _BottomNavigatorExampleState extends State<BottomNavigatorExample> {
                   },
                 ),
                 BottomBarItem(
-                  icon: const Icon(Icons.settings, size: example.Dimens.iconNormal),
-                  iconSelected: const Icon(Icons.settings, color: example.AppColors.cherryRed, size: example.Dimens.iconNormal),
+                  icon: const Icon(Icons.settings,
+                      size: example.Dimens.iconNormal),
+                  iconSelected: const Icon(Icons.settings,
+                      color: example.AppColors.cherryRed,
+                      size: example.Dimens.iconNormal),
                   title: example.Strings.settings,
                   dotColor: example.AppColors.cherryRed,
                   onTap: (value) {

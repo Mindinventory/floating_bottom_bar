@@ -11,90 +11,93 @@ This package will animate a floating action button at the center and icons at th
 ## Usage
 
 ### Example
+    ```dart
     bottomNavigationBar: AnimatedBottomNavigationBar(
-                  bottomBar: [
-                               BottomBarItem(
-                                 icon: const Icon(Icons.home, size: example.Dimens.iconNormal),
-                                 iconSelected: const Icon(Icons.home, color: example.AppColors.cherryRed, size: example.Dimens.iconNormal),
-                                 title: example.Strings.home,
-                                 dotColor: example.AppColors.cherryRed,
-                                 onTap: (value) {
-                                   setState(() {
-                                     index = value;
-                                   });
-                                   log('Home $value');
-                                 },
+                               controller: FloatingBottomBarController(initialIndex: 1),
+                               bottomBar: [
+                                 BottomBarItem(
+                                   icon: const Icon(Icons.home, size: example.Dimens.iconNormal),
+                                   iconSelected: const Icon(Icons.home, color: example.AppColors.cherryRed, size: example.Dimens.iconNormal),
+                                   title: example.Strings.home,
+                                   dotColor: example.AppColors.cherryRed,
+                                   onTap: (value) {
+                                     setState(() {
+                                       index = value;
+                                     });
+                                     log('Home $value');
+                                   },
+                                 ),
+                                 BottomBarItem(
+                                   icon: const Icon(Icons.photo, size: example.Dimens.iconNormal),
+                                   iconSelected: const Icon(Icons.photo, color: example.AppColors.cherryRed, size: example.Dimens.iconNormal),
+                                   title: example.Strings.search,
+                                   dotColor: example.AppColors.cherryRed,
+                                   onTap: (value) {
+                                     setState(() {
+                                       index = value;
+                                     });
+                                     log('Search $value');
+                                   },
+                                 ),
+                                 BottomBarItem(
+                                   icon: const Icon(Icons.person, size: example.Dimens.iconNormal),
+                                   iconSelected: const Icon(Icons.person, color: example.AppColors.cherryRed, size: example.Dimens.iconNormal),
+                                   title: example.Strings.person,
+                                   dotColor: example.AppColors.cherryRed,
+                                   onTap: (value) {
+                                     setState(() {
+                                       index = value;
+                                     });
+                                     log('Profile $value');
+                                   },
+                                 ),
+                                 BottomBarItem(
+                                   icon: const Icon(Icons.settings, size: example.Dimens.iconNormal),
+                                   iconSelected: const Icon(Icons.settings, color: example.AppColors.cherryRed, size: example.Dimens.iconNormal),
+                                   title: example.Strings.settings,
+                                   dotColor: example.AppColors.cherryRed,
+                                   onTap: (value) {
+                                     setState(() {
+                                       index = value;
+                                     });
+                                     log('Settings $value');
+                                   },
+                                 ),
+                               ],
+                               bottomBarCenterModel: BottomBarCenterModel(
+                                 centerBackgroundColor: example.AppColors.cherryRed,
+                                 centerIcon: const FloatingCenterButton(
+                                   child: Icon(
+                                     Icons.add,
+                                     color: AppColors.white,
+                                   ),
+                                 ),
+                                 centerIconChild: [
+                                   FloatingCenterButtonChild(
+                                     child: const Icon(
+                                       Icons.home,
+                                       color: AppColors.white,
+                                     ),
+                                     onTap: () {},
+                                   ),
+                                   FloatingCenterButtonChild(
+                                     child: const Icon(
+                                       Icons.home,
+                                       color: AppColors.white,
+                                     ),
+                                     onTap: () {},
+                                   ),
+                                   FloatingCenterButtonChild(
+                                     child: const Icon(
+                                       Icons.home,
+                                       color: AppColors.white,
+                                     ),
+                                     onTap: () {},
+                                   ),
+                                 ],
                                ),
-                               BottomBarItem(
-                                 icon: const Icon(Icons.photo, size: example.Dimens.iconNormal),
-                                 iconSelected: const Icon(Icons.photo, color: example.AppColors.cherryRed, size: example.Dimens.iconNormal),
-                                 title: example.Strings.search,
-                                 dotColor: example.AppColors.cherryRed,
-                                 onTap: (value) {
-                                   setState(() {
-                                     index = value;
-                                   });
-                                   log('Search $value');
-                                 },
-                               ),
-                               BottomBarItem(
-                                 icon: const Icon(Icons.person, size: example.Dimens.iconNormal),
-                                 iconSelected: const Icon(Icons.person, color: example.AppColors.cherryRed, size: example.Dimens.iconNormal),
-                                 title: example.Strings.person,
-                                 dotColor: example.AppColors.cherryRed,
-                                 onTap: (value) {
-                                   setState(() {
-                                     index = value;
-                                   });
-                                   log('Profile $value');
-                                 },
-                               ),
-                               BottomBarItem(
-                                 icon: const Icon(Icons.settings, size: example.Dimens.iconNormal),
-                                 iconSelected: const Icon(Icons.settings, color: example.AppColors.cherryRed, size: example.Dimens.iconNormal),
-                                 title: example.Strings.settings,
-                                 dotColor: example.AppColors.cherryRed,
-                                 onTap: (value) {
-                                   setState(() {
-                                     index = value;
-                                   });
-                                   log('Settings $value');
-                                 },
-                               ),
-                             ],
-                  bottomBarCenterModel: BottomBarCenterModel(
-                    centerBackgroundColor: example.AppColors.cherryRed,
-                    centerIcon: const FloatingCenterButton(
-                      child: Icon(
-                        Icons.add,
-                        color: AppColors.white,
-                      ),
-                    ),
-                    centerIconChild: [
-                      FloatingCenterButtonChild(
-                        child: const Icon(
-                          Icons.home,
-                          color: AppColors.white,
-                        ),
-                        onTap: () {},
-                      ),
-                      FloatingCenterButtonChild(
-                        child: const Icon(
-                          Icons.home,
-                          color: AppColors.white,
-                        ),
-                        onTap: () {},
-                      ),
-                      FloatingCenterButtonChild(
-                        child: const Icon(
-                          Icons.home,
-                          color: AppColors.white,
-                        ),
-                        onTap: () {},
-                      ),
-                    ],
-                  ),
-                ),
+                             ),
+    ```
 
 ### Required parameters
 

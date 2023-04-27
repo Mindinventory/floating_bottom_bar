@@ -3,12 +3,13 @@ part of floating_bottom_bar;
 /// [BottomBarItems] class is bottom menu item.
 /// Each menu is [BottomBarItemsChild] class.
 class BottomBarItems extends StatefulWidget {
-  const BottomBarItems({required this.bottomBarItemsList,
+  const BottomBarItems({
+    required this.bottomBarItemsList,
     this.barColor = Colors.white,
     this.barGradient,
     this.controller,
-    Key? key,})
-      : super(key: key);
+    Key? key,
+  }) : super(key: key);
   final List<BottomBarItem> bottomBarItemsList;
   final Color barColor;
   final Gradient? barGradient;

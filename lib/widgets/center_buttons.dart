@@ -70,7 +70,6 @@ class _CenterButtonsState extends State<CenterButtons> {
                         // color: AppColors.lightPink
                       ),
                       curve: Curves.easeOut,
-
                       duration: Duration(
                           milliseconds: (value > Dimens.buttonHeight)
                               ? Dimens.animationDurationNormal
