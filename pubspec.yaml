@@ -6,7 +6,6 @@ issue_tracker: https://github.com/Mindinventory/floating_bottom_bar/issues
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.17.0"
 
 dependencies:
   flutter:
