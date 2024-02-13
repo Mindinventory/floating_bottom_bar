@@ -1,4 +1,4 @@
-part of floating_bottom_bar;
+part of '../animated_bottom_navigation_bar.dart';
 
 /// [Images] class contains all the images path, which are used in this package.
 class Images {

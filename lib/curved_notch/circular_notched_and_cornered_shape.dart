@@ -1,4 +1,4 @@
-part of floating_bottom_bar;
+part of '../animated_bottom_navigation_bar.dart';
 
 /// [CircularNotchedAndCorneredRectangle] A shape with a notch in its outline.
 class CircularNotchedAndCorneredRectangle extends NotchedShape {

@@ -1,4 +1,4 @@
-part of floating_bottom_bar;
+part of '../animated_bottom_navigation_bar.dart';
 
 /// [BottomBarCenterModel] class is model class for bottom menu.
 /// It takes [icon], [iconSelected], [title], [dotColor], [titleStyle] as parameters.

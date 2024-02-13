@@ -1,4 +1,4 @@
-part of floating_bottom_bar;
+part of '../animated_bottom_navigation_bar.dart';
 
 /// [AnimatedButton] is docked button in center.
 /// We have created animations using [AnimatedList].
