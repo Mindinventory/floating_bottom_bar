@@ -1,4 +1,4 @@
-part of floating_bottom_bar;
+part of '../animated_bottom_navigation_bar.dart';
 
 /// [AppColors] class contains all the colors, which are used in this package.
 class AppColors {

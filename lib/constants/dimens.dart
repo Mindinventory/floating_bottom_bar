@@ -1,4 +1,4 @@
-part of floating_bottom_bar;
+part of '../animated_bottom_navigation_bar.dart';
 
 /// [Dimens] class contains all the dimensions, which are used in this package.
 class Dimens {

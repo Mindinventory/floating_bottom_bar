@@ -1,4 +1,4 @@
-part of floating_bottom_bar;
+part of '../animated_bottom_navigation_bar.dart';
 
 /// [FloatingCenterButton] class shows a
 class FloatingCenterButton extends StatefulWidget {

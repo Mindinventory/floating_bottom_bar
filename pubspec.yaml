@@ -1,20 +1,20 @@
 name: floating_bottom_bar
 description: This package provides sliding animation to floating action button located at the center and bottom tab button.
-version: 0.0.2
+version: 0.0.3
 repository: https://github.com/Mindinventory/floating_bottom_bar
 issue_tracker: https://github.com/Mindinventory/floating_bottom_bar/issues
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: '>=3.2.6 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^2.0.5
+  flutter_svg: ^2.0.9
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
+  flutter_lints: ^3.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

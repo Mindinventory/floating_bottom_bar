@@ -1,4 +1,4 @@
-part of floating_bottom_bar;
+part of '../animated_bottom_navigation_bar.dart';
 
 /// [CenterButtonChildAnimation] class performs animation when center button clicks.
 class CenterButtonChildAnimation extends StatefulWidget {

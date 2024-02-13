@@ -1,4 +1,4 @@
-part of floating_bottom_bar;
+part of '../animated_bottom_navigation_bar.dart';
 
 /// [BottomBarItemsChild] class takes [index],[BottomBarItem],[widgetWidth],[onTapCallback] parameters
 /// We will Display each menu item in bottom navigation.

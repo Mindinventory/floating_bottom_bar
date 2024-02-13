@@ -1,4 +1,4 @@
-part of floating_bottom_bar;
+part of '../animated_bottom_navigation_bar.dart';
 
 /// [BottomBarItems] class is bottom menu item.
 /// Each menu is [BottomBarItemsChild] class.
