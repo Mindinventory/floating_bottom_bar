@@ -1,3 +1,7 @@
+## 0.0.4
+
+* Library details, flutter and dart version updated.
+
 ## 0.0.3
 
 * Version change
